@@ -1,0 +1,196 @@
+{"date": "2026-10-06", "description": "Fordonsskatt", "amount": -1177.0, "category": "vehicle_tax", "is_cost": true, "source": "manual", "approximate": false, "split_of": ""}
+{"date": "2026-10-04", "description": "OKQ8 MOLNDAL", "amount": -1054.07, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-09-27", "description": "OKQ8 MOLNDAL", "amount": -519.6, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-09-14", "description": "Överfört till Volvia", "amount": -628.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-09-14", "description": "Inbetalt via Bankgiro", "amount": 6141.87, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-09-13", "description": "EasyPark", "amount": -14.95, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-31", "description": "CARSPECT.SE", "amount": -529.0, "category": "inspection", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-23", "description": "OKQ8 MOLNDAL", "amount": -759.14, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-15", "description": "OKQ8 33020 APP OP", "amount": -638.67, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-14", "description": "Överfört till Volvia", "amount": -628.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-14", "description": "Inbetalt via Bankgiro", "amount": 7191.97, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-12", "description": "MOBILL", "amount": -2.38, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-08-10", "description": "MOBILL", "amount": -14.44, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-07-16", "description": "OKQ8 MOLNDAL", "amount": -807.97, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-07-13", "description": "Överfört till Volvia", "amount": -628.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-07-13", "description": "Inbetalt via Bankgiro", "amount": 8206.11, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-07-12", "description": "EasyPark", "amount": -103.5, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-07-11", "description": "OKQ8 MOLNDAL", "amount": -494.85, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-07-03", "description": "Tanka Sisjön", "amount": -479.37, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-30", "description": "CIRCLE K BOe I TELEMARK", "amount": -383.27, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-29", "description": "WWW.APCOA.NO", "amount": -232.4, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-28", "description": "CIRCLE K MJOeNDALEN", "amount": -341.16, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-27", "description": "Tanka Sisjön", "amount": -216.86, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-21", "description": "OKQ8 33825 APP OP", "amount": -527.84, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-14", "description": "OKQ8 33825 APP OP", "amount": -700.53, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-12", "description": "OKQ8 33825 APP OP", "amount": -497.79, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-11", "description": "Överfört till Volvia", "amount": -628.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-06-11", "description": "Inbetalt via Bankgiro", "amount": 5884.58, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-05-13", "description": "Överfört till Volvia", "amount": -628.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-05-13", "description": "Inbetalt via Bankgiro", "amount": 5765.32, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-05-09", "description": "Tanka Sisjön", "amount": -500.12, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-05-04", "description": "EasyPark", "amount": -78.2, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-04-28", "description": "Överfört till Volvia", "amount": -601.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-04-28", "description": "Inbetalt via Bankgiro", "amount": 5837.74, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-04-27", "description": "Bilia Almedal", "amount": -13689.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": "2026-04-27|Bilia Almedal|-15184.00"}
+{"date": "2026-04-27", "description": "Bilia Almedal (shift + storage)", "amount": -1495.0, "category": "tyre_service", "is_cost": true, "source": "carpay", "approximate": false, "split_of": "2026-04-27|Bilia Almedal|-15184.00"}
+{"date": "2026-04-10", "description": "Bilia / EBD", "amount": -4432.1, "category": "tyres", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-04-05", "description": "OKQ8 33825 APP OP", "amount": -459.06, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-30", "description": "EasyPark", "amount": -8.25, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-30", "description": "Överfört till Volvia", "amount": -601.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-30", "description": "Inbetalt via Bankgiro", "amount": 3600.22, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-29", "description": "OKQ8 33825 APP OP", "amount": -1034.57, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-26", "description": "EasyPark", "amount": -9.85, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-21", "description": "Tanka Falkenb.", "amount": -134.9, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-21", "description": "Rejmes Falkenberg", "amount": -269.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-20", "description": "Tanka Torup", "amount": -665.61, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-09", "description": "EasyPark", "amount": -29.95, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-07", "description": "AIMO PARK SWEDEN WEB", "amount": -73.7, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-06", "description": "Circle K", "amount": -159.0, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-06", "description": "Tanka Tunhemsv.", "amount": -191.18, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-03-04", "description": "OKQ8 61240 APP OP", "amount": -355.82, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-02-27", "description": "Överfört till Volvia", "amount": -601.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-02-27", "description": "Inbetalt via Bankgiro", "amount": 2337.01, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-02-14", "description": "OKQ8 33825 APP OP", "amount": -694.31, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-02-04", "description": "Bilia Almedal", "amount": -15992.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-01-28", "description": "Överfört till Volvia", "amount": -601.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-01-28", "description": "Inbetalt via Bankgiro", "amount": 3653.85, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-01-24", "description": "Tanka Sisjön", "amount": -564.76, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2026-01-24", "description": "Bilia Sisjön", "amount": -199.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-29", "description": "OKQ8 Mölndal", "amount": -353.04, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-29", "description": "Circle K", "amount": -248.0, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-29", "description": "Överfört till Volvia", "amount": -601.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-29", "description": "Inbetalt via Bankgiro", "amount": 4039.47, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-28", "description": "Tanka Mora", "amount": -467.76, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-21", "description": "Tanka Malung", "amount": -328.36, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-16", "description": "EasyPark", "amount": -24.95, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-15", "description": "Tanka Sisjön", "amount": -409.49, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-12-15", "description": "Bilia Sisjön", "amount": -249.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-28", "description": "KJELL & CO 105", "amount": -319.02, "category": "not_car", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-27", "description": "Överfört till Volvia", "amount": -601.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-27", "description": "Inbetalt via Bankgiro", "amount": 1874.92, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-24", "description": "Bilia Almedal", "amount": -11667.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-15", "description": "OKQ8 Mölndal", "amount": -594.7, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-03", "description": "Bilia Almedal", "amount": -1495.0, "category": "tyre_service", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-11-02", "description": "EasyPark", "amount": -57.5, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-10-29", "description": "OKQ8 Mölndal", "amount": -596.0, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-10-28", "description": "Överfört till Volvia", "amount": -577.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-10-28", "description": "Inbetalt via Bankgiro", "amount": 1317.17, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-10-16", "description": "OKQ8 Mölndal", "amount": -457.92, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-10-07", "description": "Fordonsskatt", "amount": -1172.0, "category": "vehicle_tax", "is_cost": true, "source": "manual", "approximate": false, "split_of": ""}
+{"date": "2025-10-04", "description": "AIMO PARK SWEDEN WEB", "amount": -220.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-09-29", "description": "Överfört till Volvia", "amount": -577.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-09-29", "description": "Inbetalt via Bankgiro", "amount": 3569.41, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-09-08", "description": "OKQ8 Malmö Kust", "amount": -740.17, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-09-01", "description": "Besiktning", "amount": -600.0, "category": "inspection", "is_cost": true, "source": "manual", "approximate": true, "split_of": ""}
+{"date": "2025-08-28", "description": "Överfört till Volvia", "amount": -577.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-28", "description": "Inbetalt via Bankgiro", "amount": 3832.39, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-26", "description": "OKQ8 Malmö Kust", "amount": -267.47, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-25", "description": "MOBILL", "amount": -27.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-21", "description": "MOBILL", "amount": -23.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-19", "description": "MOBILL", "amount": -25.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-17", "description": "PARKSTER SWE", "amount": -220.04, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-16", "description": "OKQ8 Malmö Kust", "amount": -485.85, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-16", "description": "MOBILL", "amount": -27.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-14", "description": "MOBILL", "amount": -19.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-10", "description": "WASH WORLD 246", "amount": -169.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-10", "description": "OKQ8 62963 APP OP", "amount": -746.15, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-07", "description": "CIRCLE K JONKOPING EUROST", "amount": -319.91, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-03", "description": "OKQ8 Malmö Kust", "amount": -633.99, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-08-01", "description": "MOBILL", "amount": -29.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-28", "description": "Överfört till Volvia", "amount": -577.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-28", "description": "Inbetalt via Bankgiro", "amount": 4330.27, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-17", "description": "ST1 ARVIDSTORPSV", "amount": -100.0, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-17", "description": "Tanka Falkenb.", "amount": -417.86, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-15", "description": "OKQ8 Malmö Kust", "amount": -570.54, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-13", "description": "MOBILL", "amount": -14.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-10", "description": "INGO BRASTAD", "amount": -538.24, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-07-05", "description": "MOBILL", "amount": -2.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-27", "description": "Överfört till Volvia", "amount": -577.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-27", "description": "Inbetalt via Bankgiro", "amount": 3554.3, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-22", "description": "Tanka Jägersro", "amount": -667.27, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-22", "description": "Bilia Jägersro", "amount": -34.5, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-15", "description": "OKQ8 Malmö Kust", "amount": -595.6, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-15", "description": "WASH WORLD 246", "amount": -79.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-04", "description": "Vinted, UAB", "amount": -112.5, "category": "not_car", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-06-01", "description": "OKQ8 Glumslöv", "amount": -651.65, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-28", "description": "Överfört till Volvia", "amount": -577.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-28", "description": "Inbetalt via Bankgiro", "amount": 4032.86, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-27", "description": "OKQ8 Malmö Kust", "amount": -411.73, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-17", "description": "WASH WORLD 246", "amount": -79.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-16", "description": "OKQ8 Malmö Kust", "amount": -558.33, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-11", "description": "MOBILL", "amount": -7.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-05-10", "description": "OKQ8 Malmö Kust", "amount": -308.49, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-30", "description": "Bilia Värnhem", "amount": -445.0, "category": "tyre_service", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-28", "description": "Inbetalt via Bankgiro", "amount": 1804.08, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-22", "description": "MOBILL", "amount": -20.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-21", "description": "OKQ8 Malmö Kust", "amount": -641.11, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-15", "description": "MOBILL", "amount": -2.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-15", "description": "MOBILL", "amount": -27.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-14", "description": "Bilia Värnhem", "amount": -6451.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-13", "description": "OKQ8 Malmö Kust", "amount": -685.0, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-04-11", "description": "MOBILL", "amount": -23.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-31", "description": "MOBILL", "amount": -18.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-28", "description": "Inbetalt via Bankgiro", "amount": 1373.03, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-25", "description": "MOBILL", "amount": -25.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-22", "description": "OKQ8 33117 APP WA", "amount": -299.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-22", "description": "OKQ8 Malmö Kust", "amount": -555.08, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-21", "description": "MOBILL", "amount": -25.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-17", "description": "MOBILL", "amount": -28.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-12", "description": "MOBILL", "amount": -15.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-03-12", "description": "BILTEMA SWEDEN MALMO", "amount": -299.0, "category": "car_parts", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-02-27", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-02-27", "description": "Inbetalt via Bankgiro", "amount": 3080.89, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-02-22", "description": "OKQ8 Malmö Kust", "amount": -816.03, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-02-12", "description": "MOBILL", "amount": -17.0, "category": "parking", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-28", "description": "Inbetalt via Bankgiro", "amount": 1685.4, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-25", "description": "OKQ8 Malmö Kust", "amount": -303.12, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-12", "description": "OKQ8 Malmö Kust", "amount": -623.29, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-04", "description": "OKQ8 Malmö Kust", "amount": -661.75, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-04", "description": "OKQ8 33117 APP WA", "amount": -299.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2025-01-01", "description": "Tanka Borlänge", "amount": -653.73, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-12-28", "description": "Tanka Torup", "amount": -490.69, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-12-27", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-12-27", "description": "Inbetalt via Bankgiro", "amount": 1734.96, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-12-21", "description": "OKQ8 33117 APP WA", "amount": -199.0, "category": "wash", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-12-01", "description": "OKQ8 Malmö Kust", "amount": -455.71, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-11-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-11-28", "description": "Inbetalt via Bankgiro", "amount": 2889.06, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-11-17", "description": "OKQ8 Malmö Kust", "amount": -612.78, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-11-06", "description": "Tanka Falkenb.", "amount": -582.18, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-10-31", "description": "Fordonsskatt", "amount": -1165.0, "category": "vehicle_tax", "is_cost": true, "source": "manual", "approximate": false, "split_of": ""}
+{"date": "2024-10-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-10-28", "description": "Inbetalt via Bankgiro", "amount": 3438.75, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-10-25", "description": "BILVERKSTAD YSTADVAGEN", "amount": -700.0, "category": "tyre_service", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-10-20", "description": "OKQ8 Malmö Kust", "amount": -497.98, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-10-05", "description": "OKQ8 Malmö Kust", "amount": -556.08, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-10-04", "description": "Bilia Värnhem", "amount": -595.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-09-27", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-09-27", "description": "Inbetalt via Bankgiro", "amount": 1652.54, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-09-22", "description": "Tanka Torup", "amount": -567.75, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-09-20", "description": "Bilia Trelleb.", "amount": -2331.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-09-01", "description": "Besiktning", "amount": -800.0, "category": "inspection", "is_cost": true, "source": "manual", "approximate": true, "split_of": ""}
+{"date": "2024-08-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-08-28", "description": "Inbetalt via Bankgiro", "amount": 2054.14, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-08-25", "description": "OKQ8 Malmö Kust", "amount": -732.54, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-08-22", "description": "Bilia Värnhem", "amount": -380.0, "category": "workshop", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-07-30", "description": "Tanka Torup", "amount": -404.19, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-07-29", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-07-29", "description": "Inbetalt via Bankgiro", "amount": 3131.73, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-07-21", "description": "OKQ8 Malmö Kust", "amount": -819.08, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-07-16", "description": "Kortköp 240715 ZOR SWEDEN AUTO", "amount": -2628.0, "category": "tyres", "is_cost": true, "source": "manual", "approximate": false, "split_of": ""}
+{"date": "2024-07-06", "description": "OKQ8 Malmö Kust", "amount": -290.87, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-06-30", "description": "OKQ8 Malmö Kust", "amount": -584.86, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-06-27", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-06-27", "description": "Inbetalt via Bankgiro", "amount": 1834.16, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-06-20", "description": "ST1 MALMO CYPRESSVAGEN", "amount": -703.83, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-06-10", "description": "PREEM", "amount": -645.34, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-06-06", "description": "OKQ8 Partille", "amount": -657.7, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-05-28", "description": "Överfört till Volvia", "amount": -540.0, "category": "insurance", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-05-28", "description": "Inbetalt via Bankgiro", "amount": 540.0, "category": "payment", "is_cost": false, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-05-26", "description": "CIRCLE K MALMO MIDHEM", "amount": -565.86, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-05-16", "description": "OKQ8 Glumslöv", "amount": -728.3, "category": "fuel", "is_cost": true, "source": "carpay", "approximate": false, "split_of": ""}
+{"date": "2024-05-02", "description": "Fordonsskatt", "amount": -643.0, "category": "vehicle_tax", "is_cost": true, "source": "manual", "approximate": false, "split_of": ""}
