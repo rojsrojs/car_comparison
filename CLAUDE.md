@@ -9,6 +9,63 @@ Decide whether to keep the current car (Volvo V40 diesel) or switch to a leasing
 1. A bookkeeping/analysis of actual car costs from CarPay statements (categorized by fuel, workshop, tyres, parking, etc.).
 2. A fair cost comparison (per month and per mil, where 1 mil = 10 km) between the alternatives, ideally as an interactive calculator (HTML) and/or an Excel file where assumptions can be changed.
 
+## Web app (car comparison)
+
+Start: double-click `start.bat` (runs `python app.py`, opens http://localhost:8765). Standard library only, no installs.
+Files: `app.py` (server), `web/` (page), `data/cars.json` (the car database), `build_v40.py` (V40 from transactions).
+
+### cars.json
+
+```json
+{
+  "settings": {"mil_per_year": 1750, "return_rate_pct": 7.0,
+               "prices": {"diesel": 23.19, "petrol": 18.74, "el_home": 1.80, "el_public": 4.50},
+               "prices_note": "where the prices come from"},
+  "cars": [{"id": "yaris-cross", "name": "...", "kind": "lease|own|buy", "notes": "...",
+            "items": [{"id": "rent", "name": "...", "type": "fixed", "value": 3528, "enabled": true, "note": "..."}]}]
+}
+```
+
+Every cost is an item, converted to kr/month by the page. Item types and their fields:
+
+| type | fields | kr/month |
+|---|---|---|
+| `fixed` | `value` (kr/month) | value |
+| `per_year` | `value` (kr/year) | value / 12 |
+| `one_time` | `value` (kr), `months` | value / months (e.g. setup fee over the contract) |
+| `fuel` | `energy` (diesel, petrol, el_home, el_public), `consumption` (per mil: l or kWh), `share_pct` | consumption × mil_per_year × price × share / 12 |
+| `capital` | `amount` (kr tied up) | amount × return_rate_pct / 100 / 12 |
+| `excess_mileage` | `rate` (kr/mil), `limit_per_year` (mil) | max(0, mil_per_year − limit) × rate / 12 |
+
+Optional `group` on any item makes items either/or within a car: ticking one unticks the others in the same
+group (used for V40 repairs all-period vs last-12-month average, and fuel at current price vs historical).
+
+Optional `"hidden": true` on an item hides it in the app and leaves it out of the total (the item and its
+`enabled` state stay in the file; a card shows "N hidden costs" with a link to show them).
+
+Fuel/electricity always uses the current prices in `settings`, not historical spend. An EV that charges partly
+in public gets two `fuel` items (e.g. el_home 80 % + el_public 20 %).
+
+### Adding a car from a dealer quote
+
+When the user gives a quote, add a car to `data/cars.json`: one item per cost line (rent, insurance, winter
+wheels, invoice fee as `fixed`; setup fee as `one_time` over the contract months; vehicle tax as `per_year`;
+fuel as `fuel` with real-world consumption, typically WLTP + 10-20 %; excess mileage as `excess_mileage`).
+Inspection (besiktning): the V40 is inspected every year (latest cost 529 kr, `per_year`). For other cars count
+the whole inspections that actually fall inside the contract and add them as `one_time` (value = 529 × number of
+inspections, months = contract length). A new car's first inspection is due 36 months after first registration, so
+a new 36-month lease usually has none (value 0; check the registration date). A car inspected every second year
+has 1 or 2 inside a 36-month contract, depending on the dates.
+Put the source and anything unverified in `note`. Show the user a summary of the car before writing it.
+Keep the JSON valid and the format above; the open page reloads the file within a few seconds.
+
+### V40
+
+`python build_v40.py` rebuilds the V40 items marked `"auto": true` from `data/carpay_transactions.csv`
+(averages over complete months; insurance and vehicle tax use the latest charge). It keeps the
+enabled/disabled choices. Editing an auto item's value in the app sets `"auto": false` (badge "edited"); the
+script then keeps the user's value and only refreshes `auto_value`, which the app's "use data value" button restores. Assumption items (diesel consumption, depreciation, capital) are not overwritten.
+
 ## Principle: compare only what differs
 
 Costs that are equal in every scenario can be left out of the comparison (garage/parking at home, congestion tax, washing, fines). Congestion tax (trängselskatt) is the same for EVs, no exemption in Stockholm/Gothenburg. Costs that differ must be included: depreciation + capital cost vs. lease fee, fuel/charging, service, tyres, insurance, vehicle tax, inspection, mileage/wear fees at lease return.

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car costs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Car costs</h1>
+    <span id="status" class="status"></span>
+  </header>
+  <main>
+    <section class="panel" id="summary"></section>
+    <section class="panel" id="settings"></section>
+    <div class="toolbar">
+      <button type="button" id="add-car">+ Add car</button>
+      <span class="hint">Untick a cost to leave it out. Changes are saved to data/cars.json automatically.</span>
+    </div>
+    <section id="cars"></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

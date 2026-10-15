@@ -1,0 +1,169 @@
+{
+  "settings": {
+    "mil_per_year": 1700,
+    "return_rate_pct": 7,
+    "prices": {
+      "diesel": 23.19,
+      "petrol": 18.74,
+      "el_home": 1.8,
+      "el_public": 4.5
+    },
+    "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract."
+  },
+  "cars": [
+    {
+      "id": "v40",
+      "name": "Volvo V40 diesel (2018)",
+      "kind": "own",
+      "default": true,
+      "notes": "Current car, bought April 2024. Costs from CarPay + manual rows.",
+      "items": [
+        {
+          "id": "repairs",
+          "name": "Repairs & service (all-period average)",
+          "type": "fixed",
+          "value": 1779,
+          "enabled": true,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 3483 kr/month.",
+          "group": "repairs",
+          "auto_value": 1779
+        },
+        {
+          "id": "repairs_12m",
+          "name": "Repairs & service (last 12 months)",
+          "type": "fixed",
+          "value": 3483,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2025-10 to 2026-09. All-period average: 1779 kr/month.",
+          "group": "repairs",
+          "auto_value": 3483
+        },
+        {
+          "id": "tyres",
+          "name": "New tyres",
+          "type": "fixed",
+          "value": 243,
+          "enabled": true,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 369 kr/month.",
+          "auto_value": 243
+        },
+        {
+          "id": "tyre_service",
+          "name": "Tyre shift + storage",
+          "type": "fixed",
+          "value": 143,
+          "enabled": true,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 249 kr/month.",
+          "auto_value": 143
+        },
+        {
+          "id": "insurance",
+          "name": "Insurance (Volvia)",
+          "type": "fixed",
+          "value": 628,
+          "enabled": true,
+          "auto": true,
+          "note": "Latest monthly premium. Average 2024-05 to 2026-09 (29 complete months): 575 kr/month.",
+          "auto_value": 628
+        },
+        {
+          "id": "vehicle_tax",
+          "name": "Vehicle tax",
+          "type": "per_year",
+          "value": 1177,
+          "enabled": true,
+          "auto": true,
+          "note": "Latest yearly tax.",
+          "auto_value": 1177
+        },
+        {
+          "id": "inspection",
+          "name": "Inspection (latest cost)",
+          "type": "per_year",
+          "value": 529,
+          "enabled": true,
+          "auto": true,
+          "note": "Latest inspection cost, counted once a year. Average 2024-05 to 2026-09 (29 complete months): 798 kr/year.",
+          "auto_value": 529
+        },
+        {
+          "id": "car_parts",
+          "name": "Car parts",
+          "type": "fixed",
+          "value": 10,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 0 kr/month.",
+          "auto_value": 10,
+          "hidden": true
+        },
+        {
+          "id": "parking",
+          "name": "Parking (same for every car)",
+          "type": "fixed",
+          "value": 50,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 73 kr/month.",
+          "auto_value": 50,
+          "hidden": true
+        },
+        {
+          "id": "wash",
+          "name": "Car wash (same for every car)",
+          "type": "fixed",
+          "value": 48,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 22 kr/month.",
+          "auto_value": 48,
+          "hidden": true
+        },
+        {
+          "id": "fuel_history",
+          "name": "Fuel, historical average",
+          "type": "fixed",
+          "value": 1291,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 1215 kr/month.",
+          "group": "fuel",
+          "auto_value": 1291,
+          "hidden": true
+        },
+        {
+          "id": "fuel",
+          "name": "Diesel at current price",
+          "type": "fuel",
+          "energy": "diesel",
+          "consumption": 0.45,
+          "share_pct": 100,
+          "enabled": true,
+          "note": "Estimate: historical spend ~1 290 kr/month at ~20 kr/l average gives ~0.45 l/mil. Check with odometer + litres.",
+          "group": "fuel"
+        },
+        {
+          "id": "depreciation",
+          "name": "Depreciation",
+          "type": "fixed",
+          "value": 1724,
+          "enabled": true,
+          "note": "~50 000 kr value loss since the purchase in April 2024, over 29 months."
+        },
+        {
+          "id": "capital",
+          "name": "Missed index-fund return",
+          "type": "capital",
+          "amount": 180000,
+          "enabled": true,
+          "note": "Purchase price 180 000 kr. The car is now worth ~130 000 kr (amount 130000 gives the forward-looking cost)."
+        }
+      ],
+      "basis": "2024-05 to 2026-09 (29 complete months)"
+    }
+  ]
+}
