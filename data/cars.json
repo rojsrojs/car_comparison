@@ -45,7 +45,7 @@
           "name": "New tyres",
           "type": "fixed",
           "value": 243,
-          "enabled": true,
+          "enabled": false,
           "auto": true,
           "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 369 kr/month.",
           "auto_value": 243
@@ -55,7 +55,7 @@
           "name": "Tyre shift + storage",
           "type": "fixed",
           "value": 143,
-          "enabled": true,
+          "enabled": false,
           "auto": true,
           "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 249 kr/month.",
           "auto_value": 143
@@ -140,7 +140,7 @@
           "name": "Diesel at current price",
           "type": "fuel",
           "energy": "diesel",
-          "consumption": 0.45,
+          "consumption": 0.51,
           "share_pct": 100,
           "enabled": true,
           "note": "Estimate: historical spend ~1 290 kr/month at ~20 kr/l average gives ~0.45 l/mil. Check with odometer + litres.",
@@ -159,11 +159,170 @@
           "name": "Missed index-fund return",
           "type": "capital",
           "amount": 180000,
-          "enabled": true,
+          "enabled": false,
           "note": "Purchase price 180 000 kr. The car is now worth ~130 000 kr (amount 130000 gives the forward-looking cost)."
         }
       ],
       "basis": "2024-05 to 2026-09 (29 complete months)"
+    },
+    {
+      "id": "car-upwdyt",
+      "name": "Audi A3 Sportback",
+      "kind": "lease",
+      "notes": "Möllers",
+      "items": [
+        {
+          "id": "item-krwz71",
+          "name": "Leasingavgift",
+          "type": "fixed",
+          "enabled": true,
+          "value": 2795
+        },
+        {
+          "id": "item-2mcg51",
+          "name": "Serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 250
+        },
+        {
+          "id": "item-mmljw5",
+          "name": "Extra mil (+1000 till 2000)",
+          "type": "fixed",
+          "enabled": true,
+          "value": 450
+        },
+        {
+          "id": "item-nxr3r3",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 5068
+        },
+        {
+          "id": "item-x2r3wj",
+          "name": "Bensin",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "petrol",
+          "consumption": 0.65,
+          "share_pct": 100
+        },
+        {
+          "id": "item-ru277m",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 302
+        },
+        {
+          "id": "item-myoxfl",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 590,
+          "months": 36
+        },
+        {
+          "id": "item-jpb5ik",
+          "name": "Extra garanti",
+          "type": "fixed",
+          "enabled": true,
+          "value": 45
+        },
+        {
+          "id": "item-rgpo6a",
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36
+        }
+      ]
+    },
+    {
+      "id": "car-31ihj7",
+      "name": "Toyota Yaris Cross",
+      "kind": "lease",
+      "notes": "Toyota",
+      "items": [
+        {
+          "id": "item-y11kut",
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3528
+        },
+        {
+          "id": "item-mvpp1w",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 304
+        },
+        {
+          "id": "item-qwa1v3",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 695,
+          "months": 36
+        },
+        {
+          "id": "item-h3fng8",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 3323
+        },
+        {
+          "id": "item-7nrte3",
+          "name": "Bensin",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "petrol",
+          "consumption": 0.5,
+          "share_pct": 100
+        }
+      ]
+    },
+    {
+      "id": "car-ovwv3j",
+      "name": "Volvo EX30",
+      "kind": "lease",
+      "notes": "Volvo Cars",
+      "items": [
+        {
+          "id": "item-x3qqmf",
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 4351
+        },
+        {
+          "id": "item-e6kl4g",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 400
+        },
+        {
+          "id": "item-28t9hc",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 360
+        },
+        {
+          "id": "item-fbz31n",
+          "name": "El",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "el_public",
+          "consumption": 1.5,
+          "share_pct": 100
+        }
+      ]
     }
   ]
 }
