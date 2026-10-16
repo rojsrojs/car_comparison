@@ -100,6 +100,27 @@ textarea { width: 100%; resize: vertical; min-height: 34px; }
 .dearer { color: var(--bad); }
 .table-wrap { overflow-x: auto; }
 
+/* Size and equipment */
+.specs { width: 100%; border-collapse: collapse; }
+.specs th, .specs td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.specs thead th { font-size: 11px; color: var(--muted); font-weight: 600; vertical-align: bottom; white-space: normal; }
+.specs tbody th { font-weight: 600; font-size: 13px; }
+.specs input { padding: 3px 4px; }
+.specs td.dims { white-space: nowrap; }
+.specs td.boot.best { background: var(--warn-bg); }
+.specs td.boot.best input { font-weight: 700; color: var(--good); }
+select.feature { padding: 2px 4px; }
+select.feature.yes { color: var(--good); font-weight: 600; }
+select.feature.no, select.feature.option { color: var(--bad); }
+select.feature.unknown { color: var(--muted); }
+details { margin-top: 8px; }
+details summary { cursor: pointer; color: var(--accent); font-size: 12px; }
+.spec-source { margin: 8px 0; }
+.spec-source textarea { margin-top: 4px; }
+select.checked { font-size: 11px; }
+select.checked.official, select.checked.dealer { color: var(--good); }
+select.checked.unverified { color: var(--bad); }
+
 /* Car cards */
 #cars { display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 14px; }
 @media (max-width: 600px) { #cars { grid-template-columns: 1fr; } }
@@ -115,6 +136,11 @@ button.small { font-size: 11px; padding: 1px 6px; }
 .items tr.hidden-row td:not(.actions) { opacity: 0.55; }
 .items tr.hidden-row .cost { text-decoration: line-through; }
 .hidden-toggle { margin: 4px 0 0; }
+.budget { margin: 10px 0 4px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+.budget-title { font-weight: 600; font-size: 12px; margin-bottom: 4px; }
+.budget table { width: 100%; border-collapse: collapse; }
+.budget td { padding: 2px 4px; font-size: 13px; }
+.budget td:last-child { text-align: right; white-space: nowrap; font-weight: 600; }
 button.link {
   border: none;
   background: none;

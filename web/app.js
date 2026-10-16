@@ -15,6 +15,7 @@ const TYPES = {
   one_time: { label: 'one-time, spread', defaults: { value: 0, months: 36 } },
   fuel: { label: 'fuel / energy', defaults: { energy: 'petrol', consumption: 0.5, share_pct: 100 } },
   capital: { label: 'capital cost', defaults: { amount: 0 } },
+  depreciation: { label: 'depreciation (% per year)', defaults: { value_now: 0, rate_pct: 13, months: 36 } },
   excess_mileage: { label: 'excess mileage', defaults: { rate: 0, limit_per_year: 2000 } },
 };
 
@@ -25,6 +26,17 @@ let saving = false;
 let costCells = [];   // { item, el }
 let totalCells = [];  // { car, el }
 let originCells = []; // { item, el }: the "auto" / "edited" badge of rows computed from the transactions
+let bootCells = [];   // { car, el }: luggage cells, the largest one is highlighted
+let budgetBoxes = []; // { car, el }: "how much repair cost can this car afford" boxes
+
+// Equipment answers in the size/equipment table.
+const FEATURE = { yes: 'yes', no: 'no', option: 'extra cost', unknown: '?' };
+// How well the specs of a car are backed up.
+const CHECKED = {
+  official: 'manufacturer spec sheet',
+  dealer: 'dealer listing for this trim',
+  unverified: 'not verified',
+};
 const pendingDelete = new Set();
 const showingHidden = new Set(); // ids of cars whose hidden costs are currently shown (view state, not saved)
 
@@ -68,6 +80,13 @@ function monthly(item) {
       return num(item.consumption) * num(s.mil_per_year) * num(s.prices[item.energy]) * share / 12;
     }
     case 'capital': return num(item.amount) * num(s.return_rate_pct) / 100 / 12;
+    case 'depreciation': {
+      // The car keeps losing the same share of its value every year: value after = value now × (1 − rate)^years.
+      const months = num(item.months);
+      if (months <= 0) return 0;
+      const valueAfter = num(item.value_now) * Math.pow(1 - num(item.rate_pct) / 100, months / 12);
+      return (num(item.value_now) - valueAfter) / months;
+    }
     case 'excess_mileage': return Math.max(0, num(s.mil_per_year) - num(item.limit_per_year)) * num(item.rate) / 12;
     default: return 0;
   }
@@ -109,7 +128,9 @@ function render() {
   costCells = [];
   totalCells = [];
   originCells = [];
+  budgetBoxes = [];
   renderSettings();
+  renderSpecs();
   const cars = document.getElementById('cars');
   cars.replaceChildren(...data.cars.map(renderCar));
   updateNumbers();
@@ -127,6 +148,101 @@ function renderSettings() {
       ...priceInputs),
     s.prices_note ? h('p', { class: 'note' }, s.prices_note) : null,
   );
+}
+
+// ---------- size and equipment ----------
+
+function specNumber(car, key, title, width) {
+  const specs = car.specs;
+  return h('input', {
+    type: 'number', step: 'any', title, placeholder: '–', value: specs[key] ?? '', style: width ? `width:${width}px` : null,
+    oninput: e => {
+      specs[key] = e.target.value === '' ? null : Number(e.target.value);
+      if (key.startsWith('boot')) markBestBoot();
+      scheduleSave();
+    },
+  });
+}
+
+function specText(car, key, placeholder, width) {
+  const specs = car.specs;
+  return h('input', {
+    type: 'text', placeholder, value: specs[key] ?? '', style: `width:${width}px`,
+    oninput: e => { specs[key] = e.target.value; scheduleSave(); },
+  });
+}
+
+function featureSelect(car, key) {
+  const specs = car.specs;
+  const select = h('select', {
+    class: 'feature ' + (specs[key] || 'unknown'),
+    onchange: e => { specs[key] = e.target.value; select.className = 'feature ' + e.target.value; scheduleSave(); },
+  }, Object.entries(FEATURE).map(([k, label]) =>
+    h('option', { value: k, selected: (specs[key] || 'unknown') === k }, label)));
+  return select;
+}
+
+function markBestBoot() {
+  for (const key of ['boot_l', 'boot_roof_l']) {
+    const cells = bootCells.filter(cell => cell.key === key);
+    const best = Math.max(0, ...cells.map(({ car }) => num(car.specs[key])));
+    for (const { car, el } of cells) el.classList.toggle('best', best > 0 && num(car.specs[key]) === best);
+  }
+}
+
+function renderSpecs() {
+  bootCells = [];
+  for (const car of data.cars) car.specs = car.specs || {};  // only saved once something is edited
+  const head = ['Car', 'Power (hp)', 'kW', 'Gearbox', 'Gears', 'Range, electric (km)', 'Luggage to the cover (l)',
+    'Luggage to the roof (l)', 'Seats folded (l)',
+    'Length × width × height (mm)', 'Rear camera', 'Sensors front', 'Sensors rear', 'Adaptive cruise'];
+  const rows = data.cars.map(car => {
+    const bootCell = h('td', { class: 'boot', title: 'Luggage space with the seats up, up to the luggage cover' },
+      specNumber(car, 'boot_l', 'Luggage up to the luggage cover, seats up (l)', 70));
+    const roofCell = h('td', { class: 'boot', title: 'Luggage space with the seats up, up to the roof' },
+      specNumber(car, 'boot_roof_l', 'Luggage up to the roof, seats up (l)', 70));
+    bootCells.push({ car, el: bootCell, key: 'boot_l' }, { car, el: roofCell, key: 'boot_roof_l' });
+    return h('tr', {},
+      h('th', { scope: 'row' }, car.name || '(unnamed)', h('div', { class: 'type' }, car.kind || '')),
+      h('td', {}, specNumber(car, 'power_hp', 'Power in hp', 62)),
+      h('td', {}, specNumber(car, 'power_kw', 'Power in kW', 56)),
+      h('td', {}, specText(car, 'gearbox', 'e.g. 7-speed auto', 150)),
+      h('td', {}, specNumber(car, 'gears', 'Number of gears (empty for electric/CVT)', 46)),
+      h('td', {}, specNumber(car, 'range_km', 'Electric range in km (WLTP), only for electric cars', 62)),
+      bootCell,
+      roofCell,
+      h('td', {}, specNumber(car, 'boot_max_l', 'Luggage with the rear seats folded (l)', 70)),
+      h('td', { class: 'dims' }, specNumber(car, 'length_mm', 'Length (mm)', 58), ' × ',
+        specNumber(car, 'width_mm', 'Width (mm)', 58), ' × ', specNumber(car, 'height_mm', 'Height (mm)', 58)),
+      h('td', {}, featureSelect(car, 'rear_camera')),
+      h('td', {}, featureSelect(car, 'parking_front')),
+      h('td', {}, featureSelect(car, 'parking_rear')),
+      h('td', {}, featureSelect(car, 'adaptive_cruise')));
+  });
+
+  const sources = data.cars.map(car => h('div', { class: 'spec-source' },
+    h('strong', {}, car.name || '(unnamed)'), ' ',
+    h('select', {
+      class: 'checked ' + (car.specs.checked || 'unverified'), title: 'How well these specs are backed up',
+      onchange: e => { car.specs.checked = e.target.value; e.target.className = 'checked ' + e.target.value; scheduleSave(); },
+    }, Object.entries(CHECKED).map(([k, label]) =>
+      h('option', { value: k, selected: (car.specs.checked || 'unverified') === k }, label))),
+    h('textarea', {
+      rows: 2, placeholder: 'Where do these specs come from? Anything unverified?', value: car.specs.source ?? '',
+      oninput: e => { car.specs.source = e.target.value; scheduleSave(); },
+    })));
+
+  document.getElementById('specs').replaceChildren(
+    h('h2', {}, 'Size & equipment'),
+    h('div', { class: 'table-wrap' }, h('table', { class: 'specs' },
+      h('thead', {}, h('tr', {}, head.map(text => h('th', {}, text)))),
+      h('tbody', {}, rows))),
+    h('p', { class: 'note' }, 'Every cell can be edited. Both luggage columns are with the seats up: up to the luggage ' +
+      'cover, and up to the roof (without the cover). A number is only comparable if its source note says which it is. ' +
+      'The largest in each column is highlighted. "?" or an empty cell means not known yet.'),
+    h('details', {}, h('summary', {}, 'Sources and how sure each car is'), sources),
+  );
+  markBestBoot();
 }
 
 function renderSummary() {
@@ -189,6 +305,7 @@ function renderCar(car) {
     h('table', { class: 'items' }, h('tbody', {},
       car.items.filter(item => !item.hidden || showingHidden.has(car.id)).flatMap(item => renderItem(car, item)))),
     hiddenToggle(car),
+    repairBudget(car),
     h('div', { class: 'car-foot' },
       h('div', {}, typeSelect, ' ', h('button', { type: 'button', onclick: addItem }, '+ Add cost')),
       totalEl),
@@ -236,6 +353,37 @@ function renderItem(car, item) {
     h('td', {}), h('td', { colspan: 4, class: 'note' }, item.note))];
 }
 
+// For a car with repair items (group "repairs"): how much repairs + service per year it can afford and still cost
+// no more than each other car, given everything else that is ticked. Not an item, since it would be circular.
+function repairBudget(car) {
+  if (!car.items.some(i => i.group === 'repairs')) return null;
+  const el = h('div', { class: 'budget' });
+  budgetBoxes.push({ car, el });
+  fillBudget(car, el);
+  return el;
+}
+
+function fillBudget(car, el) {
+  const repairItems = car.items.filter(i => i.group === 'repairs');
+  const others = data.cars.filter(c => c !== car);
+  const base = car.items.filter(i => i.enabled && !i.hidden && i.group !== 'repairs')
+    .reduce((sum, i) => sum + monthly(i), 0);
+  el.replaceChildren(
+    h('div', { class: 'budget-title' }, 'Repairs & service this car can afford (everything else as ticked above)'),
+    h('table', {}, h('tbody', {}, others.map(other => {
+      const room = carTotal(other) - base;
+      return h('tr', {},
+        h('td', {}, `to cost the same as ${other.name || '(unnamed)'} (${kr(carTotal(other))}/month)`),
+        h('td', { class: room < 0 ? 'dearer' : 'cheaper' }, room < 0
+          ? `already ${kr(-room * 12)}/year dearer before any repairs`
+          : `up to ${kr(room * 12)}/year (${kr(room)}/month)`));
+    }))),
+    h('div', { class: 'note' }, 'For comparison, your own history: ' +
+      repairItems.map(i => `${i.name.replace(/^Repairs & service \(?/, '').replace(/\)$/, '')} ${kr(monthly(i) * 12)}/year`)
+        .join(', ') + '.'),
+  );
+}
+
 function hiddenToggle(car) {
   const hidden = car.items.filter(i => i.hidden);
   if (!hidden.length) return null;
@@ -281,6 +429,9 @@ function renderParams(item) {
     case 'per_year': return [numberInput(item, 'value'), unit('kr/year')];
     case 'one_time': return [numberInput(item, 'value'), unit('kr over'), numberInput(item, 'months'), unit('months')];
     case 'capital': return [numberInput(item, 'amount'), unit(`kr × ${num(data.settings.return_rate_pct)} %`)];
+    case 'depreciation':
+      return [numberInput(item, 'value_now'), unit('kr now, loses'), numberInput(item, 'rate_pct'),
+        unit('%/year, over'), numberInput(item, 'months'), unit('months')];
     case 'excess_mileage':
       return [numberInput(item, 'rate'), unit('kr/mil over'), numberInput(item, 'limit_per_year'), unit('mil/year')];
     case 'fuel': {
@@ -299,6 +450,7 @@ function renderParams(item) {
 
 function updateNumbers() {
   for (const { item, el } of costCells) el.textContent = kr(monthly(item));
+  for (const { car, el } of budgetBoxes) fillBudget(car, el);
   for (const { item, el } of originCells) {
     if (el.dataset.state !== String(item.auto)) { el.dataset.state = String(item.auto); fillOrigin(item, el); }
   }

@@ -68,11 +68,12 @@ def assumption_items(n_months: int) -> list[Item]:
          "consumption": 0.45, "share_pct": 100, "enabled": True, "group": "fuel",
          "note": "Estimate: historical spend ~1 290 kr/month at ~20 kr/l average gives ~0.45 l/mil. "
                  "Check with odometer + litres."},
-        {"id": "depreciation", "name": "Depreciation", "type": "fixed", "value": round(50_000 / n_months),
-         "enabled": True, "note": f"~50 000 kr value loss since the purchase in April 2024, over {n_months} months."},
+        {"id": "depreciation", "name": "Depreciation (13 %/year)", "type": "depreciation", "value_now": 130_000,
+         "rate_pct": 13, "months": 36, "enabled": True,
+         "note": "Same share of its value lost every year: 180 000 -> 130 000 kr in 29 months is ~12.6 %/year."},
         {"id": "capital", "name": "Missed index-fund return", "type": "capital", "amount": 180_000,
-         "enabled": True, "note": "Purchase price 180 000 kr. The car is now worth ~130 000 kr (amount 130000 "
-                                  "gives the forward-looking cost)."},
+         "enabled": False, "hidden": True,
+         "note": "Not counted on purpose (unsure the money would be invested). 180 000 kr at 7 % = 1 050 kr/month."},
     ]
 
 

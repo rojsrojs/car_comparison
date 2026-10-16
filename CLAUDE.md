@@ -35,16 +35,32 @@ Every cost is an item, converted to kr/month by the page. Item types and their f
 | `one_time` | `value` (kr), `months` | value / months (e.g. setup fee over the contract) |
 | `fuel` | `energy` (diesel, petrol, el_home, el_public), `consumption` (per mil: l or kWh), `share_pct` | consumption × mil_per_year × price × share / 12 |
 | `capital` | `amount` (kr tied up) | amount × return_rate_pct / 100 / 12 |
+| `depreciation` | `value_now` (kr), `rate_pct` (% lost per year), `months` | (value_now − value_now × (1 − rate)^(months/12)) / months. A used car keeps losing the same share of its value, not the same kronor |
 | `excess_mileage` | `rate` (kr/mil), `limit_per_year` (mil) | max(0, mil_per_year − limit) × rate / 12 |
 
 Optional `group` on any item makes items either/or within a car: ticking one unticks the others in the same
 group (used for V40 repairs all-period vs last-12-month average, and fuel at current price vs historical).
+
+A car with items in group `repairs` (the V40) also gets a "repairs & service it can afford" box: for each other car, how
+many kr/year of repairs the car can have and still cost no more, given the other ticked items (live, not stored).
 
 Optional `"hidden": true` on an item hides it in the app and leaves it out of the total (the item and its
 `enabled` state stay in the file; a card shows "N hidden costs" with a link to show them).
 
 Fuel/electricity always uses the current prices in `settings`, not historical spend. An EV that charges partly
 in public gets two `fuel` items (e.g. el_home 80 % + el_public 20 %).
+
+### Size and equipment (`specs`)
+
+Each car can have a `specs` object, shown in the app's "Size & equipment" table (all cells editable):
+`power_hp`, `power_kw`, `gearbox` (text), `gears` (number; null for electric/CVT), `range_km` (WLTP electric
+range, electric cars only; say which battery version in `source`), `boot_l` (luggage up to the luggage cover, seats up), `boot_roof_l` (up to the roof, seats up),
+`boot_max_l` (seats folded), `length_mm`, `width_mm`, `height_mm`, and the equipment answers `rear_camera`,
+`parking_front`, `parking_rear`, `adaptive_cruise` (each `yes`, `no`, `option` = extra cost, or `unknown`).
+`checked` says how well the specs are backed up: `official` (manufacturer spec sheet), `dealer` (dealer listing for
+that exact trim) or `unverified`; `source` says where each figure comes from. Luggage is measured differently by each
+maker (to the cover or to the roof), so say which in `source`. Never guess equipment: use `unknown` and say so.
+The user compares the cheapest trim of each car unless told otherwise (Audi A3 = 35 TFSI Proline 110 kW S tronic).
 
 ### Adding a car from a dealer quote
 
@@ -56,7 +72,10 @@ the whole inspections that actually fall inside the contract and add them as `on
 inspections, months = contract length). A new car's first inspection is due 36 months after first registration, so
 a new 36-month lease usually has none (value 0; check the registration date). A car inspected every second year
 has 1 or 2 inside a 36-month contract, depending on the dates.
-Put the source and anything unverified in `note`. Show the user a summary of the car before writing it.
+Every lease car also gets a `winter_tyres` item (`one_time`, 8 000 kr, months = contract length: a used set of 4 winter wheels,
+rims included since a new car has none, the user's assumption) so it is compared fairly with the V40, which has its own `winter_tyres` item (4 new Nokian 16", size assumed 205/55 R16, 6 800 kr;
+its summer tyres are new and expected to last, so the V40's `tyres` row is unticked).
+Put the source and anything unverified in `note`. Fill in `specs` too (see above). Show the user a summary of the car before writing it.
 Keep the JSON valid and the format above; the open page reloads the file within a few seconds.
 
 ### V40
