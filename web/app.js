@@ -207,20 +207,20 @@ function renderSpecs() {
     'Length × width × height (mm)', 'Rear camera', 'Sensors front', 'Sensors rear', 'Adaptive cruise'];
   const rows = data.cars.map(car => {
     const bootCell = h('td', { class: 'boot', title: 'Luggage space with the seats up, up to the luggage cover' },
-      specNumber(car, 'boot_l', 'Luggage up to the luggage cover, seats up (l)', 70));
+      specNumber(car, 'boot_l', 'Luggage up to the luggage cover, seats up (l)', 58));
     const roofCell = h('td', { class: 'boot', title: 'Luggage space with the seats up, up to the roof' },
-      specNumber(car, 'boot_roof_l', 'Luggage up to the roof, seats up (l)', 70));
+      specNumber(car, 'boot_roof_l', 'Luggage up to the roof, seats up (l)', 58));
     bootCells.push({ car, el: bootCell, key: 'boot_l' }, { car, el: roofCell, key: 'boot_roof_l' });
     return h('tr', {},
       h('th', { scope: 'row' }, car.name || '(unnamed)', h('div', { class: 'type' }, car.kind || '')),
-      h('td', {}, specNumber(car, 'power_hp', 'Power in hp', 62)),
-      h('td', {}, specNumber(car, 'power_kw', 'Power in kW', 56)),
-      h('td', {}, specText(car, 'gearbox', 'e.g. 7-speed auto', 150)),
+      h('td', {}, specNumber(car, 'power_hp', 'Power in hp', 54)),
+      h('td', {}, specNumber(car, 'power_kw', 'Power in kW', 48)),
+      h('td', {}, specText(car, 'gearbox', 'e.g. 7-speed auto', 100)),
       h('td', {}, specNumber(car, 'gears', 'Number of gears (empty for electric/CVT)', 46)),
-      h('td', {}, specNumber(car, 'range_km', 'Electric range in km (WLTP), only for electric cars', 62)),
+      h('td', {}, specNumber(car, 'range_km', 'Electric range in km (WLTP), only for electric cars', 54)),
       bootCell,
       roofCell,
-      h('td', {}, specNumber(car, 'boot_max_l', 'Luggage with the rear seats folded (l)', 70)),
+      h('td', {}, specNumber(car, 'boot_max_l', 'Luggage with the rear seats folded (l)', 58)),
       h('td', { class: 'dims' }, specNumber(car, 'length_mm', 'Length (mm)', 58), ' × ',
         specNumber(car, 'width_mm', 'Width (mm)', 58), ' × ', specNumber(car, 'height_mm', 'Height (mm)', 58)),
       h('td', {}, featureSelect(car, 'rear_camera')),
@@ -325,7 +325,7 @@ function renderItem(car, item) {
   const costEl = h('td', { class: 'cost' });
   costCells.push({ item, el: costEl });
   const row = h('tr', {
-    class: 'item-row' + (item.enabled ? '' : ' off') + (item.note ? ' has-note' : '') + (item.hidden ? ' hidden-row' : ''),
+    class: 'item-row' + (item.enabled ? '' : ' off') + (item.hidden ? ' hidden-row' : ''),
   },
     h('td', {}, h('input', {
       type: 'checkbox', checked: !!item.enabled, title: 'Include this cost',
@@ -342,7 +342,9 @@ function renderItem(car, item) {
       },
     })),
     h('td', {}, textInput(item, 'name', 'name'), h('div', { class: 'type' },
-      TYPES[item.type]?.label ?? item.type, item.group ? ` · either/or (${item.group})` : '', originCell(item))),
+      item.group ? `either/or (${item.group})` : '', originCell(item),
+      // The description stays in the data; it is only shown when hovering the ⓘ.
+      item.note ? h('span', { class: 'info', title: item.note }, ' ⓘ') : null)),
     h('td', { class: 'params' }, renderParams(item)),
     costEl,
     h('td', { class: 'actions' },
@@ -357,9 +359,7 @@ function renderItem(car, item) {
         onclick: () => { car.items.splice(car.items.indexOf(item), 1); render(); scheduleSave(); },
       }, '×')),
   );
-  if (!item.note) return [row];
-  return [row, h('tr', { class: 'note-row' + (item.hidden ? ' hidden-row' : '') },
-    h('td', {}), h('td', { colspan: 4, class: 'note' }, item.note))];
+  return [row];
 }
 
 // For a car with repair items (group "repairs"): how much repairs + service per year it can afford and still cost

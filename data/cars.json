@@ -267,24 +267,17 @@
       "items": [
         {
           "id": "item-krwz71",
-          "name": "Leasingavgift",
+          "name": "Leasingavgift 2000 mil",
           "type": "fixed",
           "enabled": true,
-          "value": 2795
+          "value": 3272
         },
         {
           "id": "item-2mcg51",
           "name": "Serviceavtal",
           "type": "fixed",
           "enabled": true,
-          "value": 250
-        },
-        {
-          "id": "item-mmljw5",
-          "name": "Extra mil (+1000 till 2000)",
-          "type": "fixed",
-          "enabled": true,
-          "value": 450
+          "value": 494
         },
         {
           "id": "item-nxr3r3",
@@ -307,7 +300,7 @@
           "name": "Försäkring",
           "type": "fixed",
           "enabled": true,
-          "value": 302
+          "value": 356
         },
         {
           "id": "item-myoxfl",
@@ -386,7 +379,7 @@
           "type": "one_time",
           "enabled": true,
           "value": 695,
-          "months": 36
+          "months": 63
         },
         {
           "id": "item-h3fng8",
@@ -489,9 +482,9 @@
         "width_mm": 1837,
         "height_mm": 1549,
         "rear_camera": "yes",
-        "parking_front": "unknown",
+        "parking_front": "yes",
         "parking_rear": "yes",
-        "adaptive_cruise": "unknown",
+        "adaptive_cruise": "yes",
         "checked": "unverified",
         "source": "Power/gearbox from evkx.net and bilweb; luggage 318 l (plus ~7 l front) from ONE used-car ad, not from Volvo, measure unknown; dimensions from carshow360 (width there includes mirrors). Rear camera and rear sensors are listed for Core Single Motor by Volvo Car Retail and Brandt Bil; front sensors by only one of them. No source I could open states adaptive cruise / Pilot Assist for Core, and volvocars.com blocked automated access: check the configurator. Range 337 km (WLTP, 'upp till') is from Rejmes' page for the Core Single Motor, model year 2027; evkx.net gives 344 km for the Single Motor (about 49 kWh usable). This is not the Long Range version.",
         "range_km": 337
@@ -501,14 +494,14 @@
       "id": "car-tczhlr",
       "name": "Skoda Kamiq",
       "kind": "lease",
-      "notes": "",
+      "notes": "Din Bil Skoda",
       "items": [
         {
           "id": "item-3kx7e0",
           "name": "Leasingavgift 2000 mil",
           "type": "fixed",
           "enabled": true,
-          "value": 2860
+          "value": 2800
         },
         {
           "id": "item-575zaj",
@@ -565,13 +558,29 @@
           "share_pct": 100
         }
       ],
-      "specs": {}
+      "specs": {
+        "power_hp": 116,
+        "power_kw": 85,
+        "gearbox": "7-speed DSG (a 6-speed manual is cheaper)",
+        "gears": 7,
+        "boot_l": 400,
+        "boot_max_l": 1395,
+        "length_mm": 4249,
+        "width_mm": 1793,
+        "height_mm": 1559,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Skoda Sverige's price list for the Kamiq (offer valid to 2026-12-15) and skoda.se. Engine 1.0 TSI 116 hp, 6-speed manual or 7-speed DSG (DSG assumed, as the V40 is an automatic: check your quote). Standard on Selection: 'ACC - radarbaserad adaptiv farthållare' and 'Parkeringssensorer bak'. 'Backkamera' and 'Parkeringssensorer fram och bak' are in the Convenience package (8 800 kr), which the cheapest 'Selection Explore' offer (289 000 kr) includes: if your quote is plain Selection, the camera and the front sensors are extra cost. Luggage 400 l / 1 395 l folded from skoda.se (it does not say what 400 l is measured to). Length 4 249 mm and height 1 559 mm from skoda.se; the width 1 793 mm is without mirrors and not on Skoda's page (the page says 1 988 mm with mirrors)."
+      }
     },
     {
       "id": "car-24xt8k",
       "name": "Skoda Octavia",
       "kind": "lease",
-      "notes": "",
+      "notes": "Din Bil Skoda",
       "items": [
         {
           "name": "Bensin",
@@ -586,7 +595,7 @@
           "name": "Leasingavgift 2000 mil",
           "type": "fixed",
           "enabled": true,
-          "value": 3413,
+          "value": 3354,
           "id": "item-dwhz26"
         },
         {
@@ -635,13 +644,29 @@
           "id": "item-jwmrp1"
         }
       ],
-      "specs": {}
+      "specs": {
+        "power_hp": 116,
+        "power_kw": 85,
+        "gearbox": "7-speed DSG (a 6-speed manual is cheaper)",
+        "gears": 7,
+        "boot_l": 640,
+        "boot_max_l": 1700,
+        "length_mm": 4698,
+        "width_mm": 1829,
+        "height_mm": 1468,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Skoda Sverige's price list for the Octavia Combi dated 8 October 2026. The standard equipment of Selection (the cheapest trim) includes 'Adaptiv farthållare, ACC', 'Backkamera' and 'Parkeringssensorer fram och bak'. Engine 1.5 TSI 116 hp, 6-speed manual or (1.5 TSI m-HEV) 7-speed DSG: DSG assumed, check your quote. Luggage 640 l / 1 700 l folded and length 4 698 mm, height 1 468 mm from skoda.se (Combi; a Liftback has less luggage, so check which body your quote is). Skoda does not say what the 640 l is measured to. The width 1 829 mm is without mirrors and not on Skoda's page (it says 2 003 mm with mirrors)."
+      }
     },
     {
       "id": "car-r8dcks",
       "name": "Volvo EX30 Long Range (kampanj)",
       "kind": "lease",
-      "notes": "",
+      "notes": "Bilia",
       "items": [
         {
           "name": "El",
@@ -689,7 +714,182 @@
           "value": 228
         }
       ],
-      "specs": {}
+      "specs": {
+        "power_hp": 272,
+        "power_kw": 200,
+        "gearbox": "Single-speed (electric)",
+        "gears": 1,
+        "range_km": 476,
+        "boot_l": 318,
+        "length_mm": 4233,
+        "width_mm": 1837,
+        "height_mm": 1549,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "dealer",
+        "source": "Bilia's offer page names it 'Volvo EX30 P5 Plus MY27 Long Range' (offer valid during Bilia Days 14-18 October 2026) and lists 'Adaptiv farthållare, parkeringskamera' and 'upp till 476 km räckvidd'. The page does not say whether the camera is a rear or a 360 camera. Front and rear parking sensors are from Ahlberg Bil's listing of the Extended Range Plus Edition ('parkeringshjälp fram och bak', also Pilot Assist): another dealer, not Bilia. Power 272 hp / 200 kW is for the EX30 Single Motor (not stated on Bilia's page). Luggage and dimensions are copied from the other EX30 row (same body; the 318 l is from one used-car ad)."
+      }
+    },
+    {
+      "id": "car-5k0t7q",
+      "name": "Toyota C-HR",
+      "kind": "lease",
+      "notes": "",
+      "items": [
+        {
+          "name": "Bensin",
+          "type": "fuel",
+          "energy": "petrol",
+          "consumption": 0.5,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-ln6gyc"
+        },
+        {
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3937,
+          "id": "item-k7k4wf"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 304,
+          "id": "item-7y2827"
+        },
+        {
+          "id": "item-rcccgd",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "value": 695,
+          "months": 36,
+          "enabled": true
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 3644,
+          "id": "item-n2nfku"
+        },
+        {
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 8000,
+          "months": 36,
+          "id": "item-fohue3"
+        },
+        {
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36,
+          "id": "item-p3yria"
+        }
+      ],
+      "specs": {
+        "power_hp": 140,
+        "power_kw": 103,
+        "gearbox": "e-CVT (stepless hybrid, no fixed gears)",
+        "gears": null,
+        "boot_l": 388,
+        "boot_max_l": 1155,
+        "length_mm": 4362,
+        "width_mm": 1832,
+        "height_mm": 1558,
+        "rear_camera": "yes",
+        "parking_front": "no",
+        "parking_rear": "no",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Toyota Sverige's spec sheet 'Toyota C-HR specifikationer & utrustning' (March 2024), for the cheapest version, the 1.8 Hybrid 140 Active (assumed: the app does not say which trim your quote is). 1.8 Hybrid 140 hp / 103 kW with a hybrid transmission (CVT). Luggage 388 l with the seats up under the luggage cover (same measure as the Yaris Cross's 350 l), 1 155 l with the seats folded up to the roof; the figure to the roof with the seats up is not on the sheet. Length 4 362 mm, width 1 832 mm, height 1 558-1 564 mm. 'Backkamera' and 'Farthållare, intelligent aktiv (iACC)' are standard on all trims including Active. Parking sensors front and rear are standard from Style up but marked '-' (not available) for Active, and none of the options packages can be ordered on Active. 2024 sheet: check the current model."
+      }
+    },
+    {
+      "id": "car-5tc8l5",
+      "name": "Toyota Corolla Touring Sports",
+      "kind": "lease",
+      "notes": "Toyota",
+      "items": [
+        {
+          "id": "item-ghw5pz",
+          "name": "Bensin",
+          "type": "fuel",
+          "energy": "petrol",
+          "consumption": 0.5,
+          "share_pct": 100,
+          "enabled": true
+        },
+        {
+          "id": "item-nachgd",
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "value": 3729,
+          "enabled": true
+        },
+        {
+          "id": "item-5fxfcr",
+          "name": "Försäkring",
+          "type": "fixed",
+          "value": 292,
+          "enabled": true
+        },
+        {
+          "id": "item-bfqpni",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "value": 695,
+          "months": 36,
+          "enabled": true
+        },
+        {
+          "id": "item-qbnti5",
+          "name": "Skatt",
+          "type": "per_year",
+          "value": 3142,
+          "enabled": true,
+          "note": "Estimate, not in the quote: first-3-years malus 360 + 107 x (101 - 75) = 3142 kr/year with the 101 g/km WLTP CO2 of the 1.8 Hybrid on Toyota's sheet. Check with the dealer."
+        },
+        {
+          "id": "item-ibmhj2",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "value": 8000,
+          "months": 36,
+          "enabled": true
+        },
+        {
+          "id": "item-5lr9kz",
+          "name": "Besiktning",
+          "type": "one_time",
+          "value": 529,
+          "months": 36,
+          "enabled": true
+        }
+      ],
+      "specs": {
+        "power_hp": 140,
+        "power_kw": 103,
+        "gearbox": "e-CVT (stepless hybrid, no fixed gears)",
+        "gears": null,
+        "boot_l": 581,
+        "boot_max_l": 1591,
+        "length_mm": 4650,
+        "width_mm": 1790,
+        "height_mm": 1460,
+        "rear_camera": "yes",
+        "parking_front": "no",
+        "parking_rear": "no",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Toyota Sverige's spec sheet 'Corolla Touring Sports specifikationer & utrustning' (May 2024), 1.8 Hybrid Active (the quote's version). 140 hp / 103 kW, CVT; WLTP 4.5-4.7 l/100 km and 101-107 g/km CO2. Luggage 581/596 l up to the luggage cover (581 used; the sheet does not say what the two values are) and 1 591/1 606 l folded up to the roof; the figure to the roof with the seats up is not on the sheet. Length 4 650/4 660 mm, width 1 790 mm, height 1 460 mm. 'Backkamera' and 'Farthållare, intelligent aktiv (iACC)' are standard on all four trims including Active. 'Parkeringssensorer fram' and 'bak' are standard from Style up but marked '-' (not available) for Active. 2024 sheet: check the current model."
+      }
     }
   ]
 }

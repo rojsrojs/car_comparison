@@ -104,7 +104,7 @@ textarea { width: 100%; resize: vertical; min-height: 34px; }
 .specs { width: 100%; border-collapse: collapse; }
 .specs th, .specs td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
 .specs thead th { font-size: 11px; color: var(--muted); font-weight: 600; vertical-align: bottom; white-space: normal; }
-.specs tbody th { font-weight: 600; font-size: 13px; }
+.specs tbody th { font-weight: 600; font-size: 13px; white-space: normal; min-width: 110px; max-width: 150px; }
 .specs input { padding: 3px 4px; }
 .specs td.dims { white-space: nowrap; }
 .specs td.boot.best { background: var(--warn-bg); }
@@ -149,15 +149,33 @@ button.link {
   font-size: 11px;
 }
 button.link:hover { text-decoration: underline; }
-.items { width: 100%; border-collapse: collapse; margin: 8px 0; }
-.items td { padding: 4px 4px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-.items td.cost { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; width: 90px; }
-.items td.params { white-space: nowrap; }
-.items td.params span { color: var(--muted); font-size: 12px; margin: 0 4px 0 2px; }
+/* Each cost is two lines, so the cost and the buttons always fit in the card: the name, the cost and the buttons on
+   top, the editable numbers below. */
+.items, .items tbody { display: block; width: 100%; }
+.items { margin: 8px 0; }
+.items tr.item-row {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto auto;
+  grid-template-areas: "check name cost actions" ". params params params";
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 3px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+.items tr.item-row > td { display: block; padding: 0; border: 0; min-width: 0; }
+.items tr.item-row > td:nth-child(1) { grid-area: check; }
+.items tr.item-row > td:nth-child(2) { grid-area: name; display: flex; align-items: center; gap: 6px; }
+.items tr.item-row > td:nth-child(2) input.name { flex: 1 1 auto; width: auto; min-width: 90px; }
+.items tr.item-row > td:nth-child(3) { grid-area: params; }
+.items tr.item-row > td:nth-child(4) { grid-area: cost; }
+.items tr.item-row > td:nth-child(5) { grid-area: actions; }
+.items td.cost { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; min-width: 84px; }
+.items td.params { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.items td.params span { color: var(--muted); font-size: 12px; }
 .items tr.off td:not(:first-child) { opacity: 0.45; }
-.items tr.note-row td { border-bottom: 1px solid var(--line); padding-top: 0; }
-.items tr.item-row.has-note td { border-bottom: none; }
-.type { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.info { color: var(--accent); cursor: help; font-size: 12px; }
+.type { color: var(--muted); font-size: 11px; white-space: nowrap; flex: 0 0 auto; }
 .car-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .total { font-size: 16px; font-weight: 600; text-align: right; }
 .total .muted { font-weight: 400; }
