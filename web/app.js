@@ -14,7 +14,7 @@ const TYPES = {
   per_year: { label: 'kr/year', defaults: { value: 0 } },
   one_time: { label: 'one-time, spread', defaults: { value: 0, months: 36 } },
   fuel: { label: 'fuel / energy', defaults: { energy: 'petrol', consumption: 0.5, share_pct: 100 } },
-  capital: { label: 'capital cost', defaults: { amount: 0 } },
+  capital: { label: 'money tied up (interest)', defaults: { amount: 0, rate_pct: 7, months: 36 } },
   depreciation: { label: 'depreciation (% per year)', defaults: { value_now: 0, rate_pct: 13, months: 36 } },
   excess_mileage: { label: 'excess mileage', defaults: { rate: 0, limit_per_year: 2000 } },
 };
@@ -69,6 +69,9 @@ function setStatus(text, kind = '') {
 
 // ---------- cost model ----------
 
+// Each money-tied-up row has its own interest rate; rows without one use the default in the settings.
+const capitalRate = item => (item.rate_pct === undefined || item.rate_pct === null ? data.settings.return_rate_pct : item.rate_pct);
+
 function monthly(item) {
   const s = data.settings;
   switch (item.type) {
@@ -79,7 +82,13 @@ function monthly(item) {
       const share = item.share_pct === undefined || item.share_pct === null ? 1 : num(item.share_pct) / 100;
       return num(item.consumption) * num(s.mil_per_year) * num(s.prices[item.energy]) * share / 12;
     }
-    case 'capital': return num(item.amount) * num(s.return_rate_pct) / 100 / 12;
+    case 'capital': {
+      // What the money would have grown to, compounded yearly, minus the money itself, spread over the months.
+      const months = item.months === undefined || item.months === null ? 36 : num(item.months);
+      if (months <= 0) return 0;
+      const grown = num(item.amount) * Math.pow(1 + num(capitalRate(item)) / 100, months / 12);
+      return (grown - num(item.amount)) / months;
+    }
     case 'depreciation': {
       // The car keeps losing the same share of its value every year: value after = value now × (1 − rate)^years.
       const months = num(item.months);
@@ -144,7 +153,7 @@ function renderSettings() {
     h('h2', {}, 'Assumptions for all cars'),
     h('div', { class: 'settings-grid' },
       h('label', {}, 'Driving (mil/year)', numberInput(s, 'mil_per_year')),
-      h('label', {}, 'Index-fund return (%/year)', numberInput(s, 'return_rate_pct')),
+      h('label', {}, 'Default interest (%/year)', numberInput(s, 'return_rate_pct', 'Used by money-tied-up rows that have no rate of their own')),
       ...priceInputs),
     s.prices_note ? h('p', { class: 'note' }, s.prices_note) : null,
   );
@@ -428,7 +437,11 @@ function renderParams(item) {
     case 'fixed': return [numberInput(item, 'value'), unit('kr/month')];
     case 'per_year': return [numberInput(item, 'value'), unit('kr/year')];
     case 'one_time': return [numberInput(item, 'value'), unit('kr over'), numberInput(item, 'months'), unit('months')];
-    case 'capital': return [numberInput(item, 'amount'), unit(`kr × ${num(data.settings.return_rate_pct)} %`)];
+    case 'capital':
+      return [numberInput(item, 'amount', 'Money tied up (kr)'), unit('kr at'),
+        numberInput(item, 'rate_pct', `Interest per year (empty = default ${num(data.settings.return_rate_pct)} %)`),
+        unit('% per year, compounded over'), numberInput(item, 'months', 'Number of months the money is tied up'),
+        unit('months')];
     case 'depreciation':
       return [numberInput(item, 'value_now'), unit('kr now, loses'), numberInput(item, 'rate_pct'),
         unit('%/year, over'), numberInput(item, 'months'), unit('months')];
@@ -487,8 +500,14 @@ function deleteCar(car) {
   scheduleSave();
 }
 
+// A new car starts with the cost rows in settings.new_car_template (copied, with fresh ids), so only the
+// numbers need filling in. Without a template it starts empty.
 function addCar() {
-  data.cars.push({ id: uid('car'), name: 'New car', kind: 'lease', notes: '', items: [] });
+  const template = data.settings.new_car_template || [];
+  data.cars.push({
+    id: uid('car'), name: 'New car', kind: 'lease', notes: '',
+    items: template.map(item => ({ ...structuredClone(item), id: uid('item') })),
+  });
   render();
   scheduleSave();
 }

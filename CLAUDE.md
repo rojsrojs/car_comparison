@@ -34,7 +34,7 @@ Every cost is an item, converted to kr/month by the page. Item types and their f
 | `per_year` | `value` (kr/year) | value / 12 |
 | `one_time` | `value` (kr), `months` | value / months (e.g. setup fee over the contract) |
 | `fuel` | `energy` (diesel, petrol, el_home, el_public), `consumption` (per mil: l or kWh), `share_pct` | consumption × mil_per_year × price × share / 12 |
-| `capital` | `amount` (kr tied up) | amount × return_rate_pct / 100 / 12 |
+| `capital` | `amount` (kr tied up), `rate_pct` (own interest per year; if missing, `settings.return_rate_pct`), `months` (default 36) | (amount × (1 + rate)^(months/12) − amount) / months: the return the money would have earned, compounded |
 | `depreciation` | `value_now` (kr), `rate_pct` (% lost per year), `months` | (value_now − value_now × (1 − rate)^(months/12)) / months. A used car keeps losing the same share of its value, not the same kronor |
 | `excess_mileage` | `rate` (kr/mil), `limit_per_year` (mil) | max(0, mil_per_year − limit) × rate / 12 |
 
@@ -49,6 +49,13 @@ Optional `"hidden": true` on an item hides it in the app and leaves it out of th
 
 Fuel/electricity always uses the current prices in `settings`, not historical spend. An EV that charges partly
 in public gets two `fuel` items (e.g. el_home 80 % + el_public 20 %).
+
+### New-car template
+
+`settings.new_car_template` is a list of items (same format, without `id`) that the app's "+ Add car" button copies
+into every new car, so only the numbers need filling in. It is based on the Skoda Kamiq: fuel (petrol), lease fee,
+service agreement, insurance, setup fee, tax, winter wheels (8 000 kr) and inspection (529 kr), with the car-specific
+prices at 0 (except the setup fee, 590 kr). Edit the list in `cars.json` to change what new cars start with.
 
 ### Size and equipment (`specs`)
 

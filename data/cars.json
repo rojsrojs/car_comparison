@@ -6,9 +6,64 @@
       "diesel": 23.19,
       "petrol": 18.74,
       "el_home": 1.8,
-      "el_public": 4.5
+      "el_public": 5
     },
-    "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract."
+    "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract.",
+    "new_car_template": [
+      {
+        "name": "Bensin",
+        "type": "fuel",
+        "energy": "petrol",
+        "consumption": 0,
+        "share_pct": 100,
+        "enabled": true
+      },
+      {
+        "name": "Leasingavgift 2000 mil",
+        "type": "fixed",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Serviceavtal",
+        "type": "fixed",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Försäkring",
+        "type": "fixed",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Uppläggningsavgift",
+        "type": "one_time",
+        "enabled": true,
+        "value": 590,
+        "months": 36
+      },
+      {
+        "name": "Skatt",
+        "type": "per_year",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Winter wheels, 4 used (rims + tyres)",
+        "type": "one_time",
+        "enabled": true,
+        "value": 8000,
+        "months": 36
+      },
+      {
+        "name": "Besiktning",
+        "type": "one_time",
+        "enabled": true,
+        "value": 529,
+        "months": 36
+      }
+    ]
   },
   "cars": [
     {
@@ -23,7 +78,7 @@
           "name": "Repairs & service (all-period average)",
           "type": "fixed",
           "value": 1779,
-          "enabled": false,
+          "enabled": true,
           "auto": true,
           "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 3483 kr/month.",
           "group": "repairs",
@@ -177,12 +232,14 @@
         },
         {
           "id": "capital",
-          "name": "Missed index-fund return (not counted)",
+          "name": "Missed return",
           "type": "capital",
-          "amount": 180000,
-          "enabled": false,
-          "note": "Left out on purpose: after selling the car it is uncertain that the money would be invested. Kept here for later: 180 000 kr at 7 % = 1 050 kr/month, or 130 000 kr = 758 kr/month.",
-          "hidden": true
+          "amount": 130000,
+          "enabled": true,
+          "note": "Money tied up in the car, compounded yearly over the chosen months: (amount x (1 + rate)^(months/12) - amount) / months. Earlier it was left out on purpose, since it is uncertain that the money would be invested. For reference, over 36 months at 7 %: 180 000 kr = 1 125 kr/month, 130 000 kr = 813 kr/month.",
+          "hidden": false,
+          "rate_pct": 2,
+          "months": 36
         }
       ],
       "basis": "2024-05 to 2026-09 (29 complete months)",
@@ -234,7 +291,7 @@
           "name": "Skatt",
           "type": "per_year",
           "enabled": true,
-          "value": 5068
+          "value": 5142
         },
         {
           "id": "item-x2r3wj",
@@ -409,14 +466,14 @@
           "type": "fuel",
           "enabled": true,
           "energy": "el_public",
-          "consumption": 1.5,
+          "consumption": 2,
           "share_pct": 100
         },
         {
           "id": "winter_tyres",
           "name": "Winter wheels, 4 used (rims + tyres)",
           "type": "one_time",
-          "value": 8000,
+          "value": 19000,
           "months": 36,
           "enabled": true,
           "note": "Assumption: a used set of 4 winter wheels (rims and tyres), about 8 000 kr, bought once and spread over the 36 months. A new car needs its own rims, which is why this costs more than the V40's tyres alone. The lease car's own summer tyres are assumed new or included."
@@ -439,6 +496,200 @@
         "source": "Power/gearbox from evkx.net and bilweb; luggage 318 l (plus ~7 l front) from ONE used-car ad, not from Volvo, measure unknown; dimensions from carshow360 (width there includes mirrors). Rear camera and rear sensors are listed for Core Single Motor by Volvo Car Retail and Brandt Bil; front sensors by only one of them. No source I could open states adaptive cruise / Pilot Assist for Core, and volvocars.com blocked automated access: check the configurator. Range 337 km (WLTP, 'upp till') is from Rejmes' page for the Core Single Motor, model year 2027; evkx.net gives 344 km for the Single Motor (about 49 kWh usable). This is not the Long Range version.",
         "range_km": 337
       }
+    },
+    {
+      "id": "car-tczhlr",
+      "name": "Skoda Kamiq",
+      "kind": "lease",
+      "notes": "",
+      "items": [
+        {
+          "id": "item-3kx7e0",
+          "name": "Leasingavgift 2000 mil",
+          "type": "fixed",
+          "enabled": true,
+          "value": 2860
+        },
+        {
+          "id": "item-575zaj",
+          "name": "Serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 396
+        },
+        {
+          "id": "item-qrvsgu",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 322
+        },
+        {
+          "id": "item-fc5umi",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 590,
+          "months": 36
+        },
+        {
+          "id": "item-ttei1o",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 5916
+        },
+        {
+          "id": "item-10m3nj",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 8000,
+          "months": 36
+        },
+        {
+          "id": "item-u08igb",
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36
+        },
+        {
+          "id": "item-2mucat",
+          "name": "Bensin",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "petrol",
+          "consumption": 0.7,
+          "share_pct": 100
+        }
+      ],
+      "specs": {}
+    },
+    {
+      "id": "car-24xt8k",
+      "name": "Skoda Octavia",
+      "kind": "lease",
+      "notes": "",
+      "items": [
+        {
+          "name": "Bensin",
+          "type": "fuel",
+          "energy": "petrol",
+          "consumption": 0.65,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-t8ual9"
+        },
+        {
+          "name": "Leasingavgift 2000 mil",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3413,
+          "id": "item-dwhz26"
+        },
+        {
+          "name": "Serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 396,
+          "id": "item-ost3xz"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 310,
+          "id": "item-l6htde"
+        },
+        {
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 590,
+          "months": 36,
+          "id": "item-em563u"
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 5142,
+          "id": "item-voykuu"
+        },
+        {
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 8000,
+          "months": 36,
+          "id": "item-kzv9q0"
+        },
+        {
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36,
+          "id": "item-jwmrp1"
+        }
+      ],
+      "specs": {}
+    },
+    {
+      "id": "car-r8dcks",
+      "name": "Volvo EX30 Long Range (kampanj)",
+      "kind": "lease",
+      "notes": "",
+      "items": [
+        {
+          "name": "El",
+          "type": "fuel",
+          "energy": "el_public",
+          "consumption": 2,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-ye793e"
+        },
+        {
+          "name": "Leasingavgift 2000 mil inkl service",
+          "type": "fixed",
+          "enabled": true,
+          "value": 4148,
+          "id": "item-ebwjy9"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 362,
+          "id": "item-8xhtht"
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 360,
+          "id": "item-376ztr"
+        },
+        {
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 19000,
+          "months": 36,
+          "id": "item-ac1zci"
+        },
+        {
+          "id": "item-nnzu53",
+          "name": "Något tillägg",
+          "type": "fixed",
+          "enabled": true,
+          "value": 228
+        }
+      ],
+      "specs": {}
     }
   ]
 }
