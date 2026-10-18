@@ -77,23 +77,23 @@
           "id": "repairs",
           "name": "Repairs & service (all-period average)",
           "type": "fixed",
-          "value": 1779,
+          "value": 1749,
           "enabled": true,
           "auto": true,
-          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 3483 kr/month.",
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 3446 kr/month.",
           "group": "repairs",
-          "auto_value": 1779
+          "auto_value": 1749
         },
         {
           "id": "repairs_12m",
           "name": "Repairs & service (last 12 months)",
           "type": "fixed",
-          "value": 3483,
+          "value": 3446,
           "enabled": false,
           "auto": true,
-          "note": "Average 2025-10 to 2026-09. All-period average: 1779 kr/month.",
+          "note": "Average 2025-10 to 2026-09. All-period average: 1749 kr/month.",
           "group": "repairs",
-          "auto_value": 3483
+          "auto_value": 3446
         },
         {
           "id": "damask_upcoming",
@@ -111,7 +111,7 @@
           "value": 243,
           "enabled": false,
           "auto": true,
-          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 369 kr/month. Unticked: the summer tyres are fairly new and should last the next 3 years (user).",
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 369 kr/month.",
           "auto_value": 243
         },
         {
@@ -168,11 +168,11 @@
           "id": "car_parts",
           "name": "Car parts",
           "type": "fixed",
-          "value": 10,
+          "value": 23,
           "enabled": false,
           "auto": true,
           "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 0 kr/month.",
-          "auto_value": 10,
+          "auto_value": 23,
           "hidden": true
         },
         {
@@ -190,11 +190,11 @@
           "id": "wash",
           "name": "Car wash (same for every car)",
           "type": "fixed",
-          "value": 48,
+          "value": 65,
           "enabled": false,
           "auto": true,
-          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 22 kr/month.",
-          "auto_value": 48,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 60 kr/month.",
+          "auto_value": 65,
           "hidden": true
         },
         {
