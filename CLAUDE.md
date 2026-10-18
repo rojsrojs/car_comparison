@@ -23,7 +23,7 @@ push to `main`. To update the published data, change `data/cars.json` and push.
 
 ```json
 {
-  "settings": {"mil_per_year": 1750, "return_rate_pct": 7.0,
+  "settings": {"mil_per_year": 1750,
                "prices": {"diesel": 23.19, "petrol": 18.74, "el_home": 1.80, "el_public": 4.50},
                "prices_note": "where the prices come from"},
   "cars": [{"id": "yaris-cross", "name": "...", "kind": "lease|own|buy", "notes": "...",
@@ -39,7 +39,7 @@ Every cost is an item, converted to kr/month by the page. Item types and their f
 | `per_year` | `value` (kr/year) | value / 12 |
 | `one_time` | `value` (kr), `months` | value / months (e.g. setup fee over the contract) |
 | `fuel` | `energy` (diesel, petrol, el_home, el_public), `consumption` (per mil: l or kWh), `share_pct` | consumption × mil_per_year × price × share / 12 |
-| `capital` | `amount` (kr tied up), `rate_pct` (own interest per year; if missing, `settings.return_rate_pct`), `months` (default 36) | (amount × (1 + rate)^(months/12) − amount) / months: the return the money would have earned, compounded |
+| `capital` | `amount` (kr tied up), `rate_pct` (interest per year, set on each row), `months` (default 36) | (amount × (1 + rate)^(months/12) − amount) / months: the return the money would have earned, compounded |
 | `depreciation` | `value_now` (kr), `rate_pct` (% lost per year), `months` | (value_now − value_now × (1 − rate)^(months/12)) / months. A used car keeps losing the same share of its value, not the same kronor |
 | `excess_mileage` | `rate` (kr/mil), `limit_per_year` (mil) | max(0, mil_per_year − limit) × rate / 12 |
 

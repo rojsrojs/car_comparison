@@ -72,9 +72,6 @@ function setStatus(text, kind = '') {
 
 // ---------- cost model ----------
 
-// Each money-tied-up row has its own interest rate; rows without one use the default in the settings.
-const capitalRate = item => (item.rate_pct === undefined || item.rate_pct === null ? data.settings.return_rate_pct : item.rate_pct);
-
 function monthly(item) {
   const s = data.settings;
   switch (item.type) {
@@ -89,7 +86,7 @@ function monthly(item) {
       // What the money would have grown to, compounded yearly, minus the money itself, spread over the months.
       const months = item.months === undefined || item.months === null ? 36 : num(item.months);
       if (months <= 0) return 0;
-      const grown = num(item.amount) * Math.pow(1 + num(capitalRate(item)) / 100, months / 12);
+      const grown = num(item.amount) * Math.pow(1 + num(item.rate_pct) / 100, months / 12);
       return (grown - num(item.amount)) / months;
     }
     case 'depreciation': {
@@ -156,7 +153,6 @@ function renderSettings() {
     h('h2', {}, 'Assumptions for all cars'),
     h('div', { class: 'settings-grid' },
       h('label', {}, 'Driving (mil/year)', numberInput(s, 'mil_per_year')),
-      h('label', {}, 'Default interest (%/year)', numberInput(s, 'return_rate_pct', 'Used by money-tied-up rows that have no rate of their own')),
       ...priceInputs),
     s.prices_note ? h('p', { class: 'note' }, s.prices_note) : null,
   );
@@ -428,7 +424,7 @@ function renderParams(item) {
     case 'one_time': return [numberInput(item, 'value'), unit('kr over'), numberInput(item, 'months'), unit('months')];
     case 'capital':
       return [numberInput(item, 'amount', 'Money tied up (kr)'), unit('kr at'),
-        numberInput(item, 'rate_pct', `Interest per year (empty = default ${num(data.settings.return_rate_pct)} %)`),
+        numberInput(item, 'rate_pct', 'Interest per year (%)'),
         unit('% per year, compounded over'), numberInput(item, 'months', 'Number of months the money is tied up'),
         unit('months')];
     case 'depreciation':
