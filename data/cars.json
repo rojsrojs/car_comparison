@@ -1,7 +1,6 @@
 {
   "settings": {
     "mil_per_year": 1700,
-    "return_rate_pct": 7,
     "prices": {
       "diesel": 23.19,
       "petrol": 18.74,
