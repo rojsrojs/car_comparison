@@ -29,8 +29,6 @@ let originCells = []; // { item, el }: the "auto" / "edited" badge of rows compu
 let bootCells = [];   // { car, el }: luggage cells, the largest one is highlighted
 let budgetBoxes = []; // { car, el }: "how much repair cost can this car afford" boxes
 
-// Equipment answers in the size/equipment table.
-const FEATURE = { yes: 'yes', no: 'no', option: 'extra cost', unknown: '?' };
 // How well the specs of a car are backed up.
 const CHECKED = {
   official: 'manufacturer spec sheet',
@@ -186,16 +184,6 @@ function specText(car, key, placeholder, width) {
   });
 }
 
-function featureSelect(car, key) {
-  const specs = car.specs;
-  const select = h('select', {
-    class: 'feature ' + (specs[key] || 'unknown'),
-    onchange: e => { specs[key] = e.target.value; select.className = 'feature ' + e.target.value; scheduleSave(); },
-  }, Object.entries(FEATURE).map(([k, label]) =>
-    h('option', { value: k, selected: (specs[key] || 'unknown') === k }, label)));
-  return select;
-}
-
 function markBestBoot() {
   for (const key of ['boot_l', 'boot_roof_l']) {
     const cells = bootCells.filter(cell => cell.key === key);
@@ -209,7 +197,7 @@ function renderSpecs() {
   for (const car of data.cars) car.specs = car.specs || {};  // only saved once something is edited
   const head = ['Car', 'Power (hp)', 'kW', 'Gearbox', 'Gears', 'Range, electric (km)', 'Luggage to the cover (l)',
     'Luggage to the roof (l)', 'Seats folded (l)',
-    'Length × width × height (mm)', 'Rear camera', 'Sensors front', 'Sensors rear', 'Adaptive cruise'];
+    'Length × width × height (mm)'];
   const rows = data.cars.map(car => {
     const bootCell = h('td', { class: 'boot', title: 'Luggage space with the seats up, up to the luggage cover' },
       specNumber(car, 'boot_l', 'Luggage up to the luggage cover, seats up (l)', 58));
@@ -227,11 +215,7 @@ function renderSpecs() {
       roofCell,
       h('td', {}, specNumber(car, 'boot_max_l', 'Luggage with the rear seats folded (l)', 58)),
       h('td', { class: 'dims' }, specNumber(car, 'length_mm', 'Length (mm)', 58), ' × ',
-        specNumber(car, 'width_mm', 'Width (mm)', 58), ' × ', specNumber(car, 'height_mm', 'Height (mm)', 58)),
-      h('td', {}, featureSelect(car, 'rear_camera')),
-      h('td', {}, featureSelect(car, 'parking_front')),
-      h('td', {}, featureSelect(car, 'parking_rear')),
-      h('td', {}, featureSelect(car, 'adaptive_cruise')));
+        specNumber(car, 'width_mm', 'Width (mm)', 58), ' × ', specNumber(car, 'height_mm', 'Height (mm)', 58)));
   });
 
   const sources = data.cars.map(car => h('div', { class: 'spec-source' },
@@ -247,7 +231,7 @@ function renderSpecs() {
     })));
 
   document.getElementById('specs').replaceChildren(
-    h('h2', {}, 'Size & equipment'),
+    h('h2', {}, 'Size & luggage'),
     h('div', { class: 'table-wrap' }, h('table', { class: 'specs' },
       h('thead', {}, h('tr', {}, head.map(text => h('th', {}, text)))),
       h('tbody', {}, rows))),

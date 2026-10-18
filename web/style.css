@@ -109,10 +109,6 @@ textarea { width: 100%; resize: vertical; min-height: 34px; }
 .specs td.dims { white-space: nowrap; }
 .specs td.boot.best { background: var(--warn-bg); }
 .specs td.boot.best input { font-weight: 700; color: var(--good); }
-select.feature { padding: 2px 4px; }
-select.feature.yes { color: var(--good); font-weight: 600; }
-select.feature.no, select.feature.option { color: var(--bad); }
-select.feature.unknown { color: var(--muted); }
 details { margin-top: 8px; }
 details summary { cursor: pointer; color: var(--accent); font-size: 12px; }
 .spec-source { margin: 8px 0; }

@@ -64,11 +64,12 @@ prices at 0 (except the setup fee, 590 kr). Edit the list in `cars.json` to chan
 
 ### Size and equipment (`specs`)
 
-Each car can have a `specs` object, shown in the app's "Size & equipment" table (all cells editable):
+Each car can have a `specs` object, shown in the app's "Size & luggage" table (all cells editable):
 `power_hp`, `power_kw`, `gearbox` (text), `gears` (number; null for electric/CVT), `range_km` (WLTP electric
 range, electric cars only; say which battery version in `source`), `boot_l` (luggage up to the luggage cover, seats up), `boot_roof_l` (up to the roof, seats up),
-`boot_max_l` (seats folded), `length_mm`, `width_mm`, `height_mm`, and the equipment answers `rear_camera`,
-`parking_front`, `parking_rear`, `adaptive_cruise` (each `yes`, `no`, `option` = extra cost, or `unknown`).
+`boot_max_l` (seats folded), `length_mm`, `width_mm`, `height_mm`. The equipment answers `rear_camera`, `parking_front`,
+`parking_rear`, `adaptive_cruise` (each `yes`, `no`, `option` = extra cost, or `unknown`) stay in the data but are not shown:
+the user treats all cars as having them. Keep filling them in when you add a car, so they can be shown again.
 `checked` says how well the specs are backed up: `official` (manufacturer spec sheet), `dealer` (dealer listing for
 that exact trim) or `unverified`; `source` says where each figure comes from. Luggage is measured differently by each
 maker (to the cover or to the roof), so say which in `source`. Never guess equipment: use `unknown` and say so.
