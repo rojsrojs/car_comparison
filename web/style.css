@@ -179,3 +179,17 @@ button.link:hover { text-decoration: underline; }
 .car-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .total { font-size: 16px; font-weight: 600; text-align: right; }
 .total .muted { font-weight: 400; }
+
+/* Hosted (read-only) mode */
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 4px 20px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--warn-bg);
+  font-size: 13px;
+}

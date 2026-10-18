@@ -56,6 +56,11 @@ function h(tag, props = {}, ...children) {
   return el;
 }
 
+// Like el.replaceChildren(...), but skips null/false (replaceChildren(null) would write the word "null").
+function fill(el, ...children) {
+  el.replaceChildren(...children.flat().filter(c => c !== null && c !== undefined && c !== false));
+}
+
 const num = x => Number(x) || 0;
 const kr = x => Math.round(x).toLocaleString('sv-SE') + ' kr';
 const signedKr = x => (x > 0 ? '+' : x < 0 ? '−' : '±') + Math.abs(Math.round(x)).toLocaleString('sv-SE') + ' kr';
@@ -149,7 +154,7 @@ function renderSettings() {
   const s = data.settings;
   const priceInputs = Object.entries(ENERGY).map(([key, e]) =>
     h('label', {}, `${e.label} (${e.price})`, numberInput(s.prices, key)));
-  document.getElementById('settings').replaceChildren(
+  fill(document.getElementById('settings'),
     h('h2', {}, 'Assumptions for all cars'),
     h('div', { class: 'settings-grid' },
       h('label', {}, 'Driving (mil/year)', numberInput(s, 'mil_per_year')),
@@ -421,7 +426,7 @@ function fillOrigin(item, el) {
       'build_v40.py updates it when new transactions are added.' }, 'auto'));
     return;
   }
-  el.replaceChildren(
+  fill(el,
     h('span', { class: 'badge edited', title: 'You changed this value, so build_v40.py no longer updates it.' },
       'edited'),
     item.auto_value === undefined ? null : h('button', {
@@ -513,15 +518,58 @@ function addCar() {
 }
 
 // ---------- loading and saving ----------
+//
+// The page runs in one of two ways:
+//  - local: app.py serves it and saves every change to data/cars.json (GET/PUT /api/data);
+//  - hosted (e.g. GitHub Pages, no server): the published data/cars.json is read-only. A visitor's changes stay in
+//    this browser tab (sessionStorage) and are dropped when the published data changes or when they reset.
+let hosted = false;
+let publishedHash = '';   // hosted: identifies the published data the session edits are based on
+let editedInSession = false;
+const SESSION_KEY = 'car-comparison-session-v1';
+
+const hashText = text => {
+  let hash = 5381;
+  for (let i = 0; i < text.length; i++) hash = ((hash * 33) ^ text.charCodeAt(i)) >>> 0;
+  return String(hash);
+};
+
+function readSession() {
+  try { const raw = sessionStorage.getItem(SESSION_KEY); return raw ? JSON.parse(raw) : null; } catch (err) { return null; }
+}
+
+function writeSession(value) {
+  try {
+    if (value === null) sessionStorage.removeItem(SESSION_KEY); else sessionStorage.setItem(SESSION_KEY, JSON.stringify(value));
+    return true;
+  } catch (err) { return false; }
+}
+
+function renderBanner(notice = '') {
+  const el = document.getElementById('banner');
+  el.hidden = !hosted;
+  if (!hosted) return;
+  fill(el,
+    h('span', {}, 'You are viewing the published comparison. Your changes stay in this browser tab only and never change ' +
+      'the published data.' + (editedInSession ? ' You have edited this copy.' : '') + (notice ? ' ' + notice : '')),
+    editedInSession ? h('button', { type: 'button', onclick: resetToPublished }, 'Reset to published data') : null,
+  );
+}
 
 function scheduleSave() {
-  setStatus('Unsaved changes…');
+  setStatus(hosted ? '' : 'Unsaved changes…');
   clearTimeout(saveTimer);
   saveTimer = setTimeout(save, 500);
 }
 
 async function save() {
   saveTimer = null;
+  if (hosted) {
+    editedInSession = writeSession({ base: publishedHash, data });
+    setStatus(editedInSession ? 'Your changes are kept in this browser tab only' : 'Your changes could not be kept: browser storage is unavailable', editedInSession ? 'ok' : 'warn');
+    renderBanner();
+    return;
+  }
   if (saving) { scheduleSave(); return; }
   saving = true;
   try {
@@ -557,9 +605,47 @@ async function load(quiet = false) {
   if (quiet) setStatus('Reloaded: cars.json was changed outside the app.', 'ok');
 }
 
-// Pick up cars added to cars.json outside the app (e.g. by Claude) without a manual refresh.
-window.addEventListener('focus', () => load(true).catch(() => {}));
-setInterval(() => { if (!document.hidden) load(true).catch(() => {}); }, 5000);
+// Hosted: read the published file, then lay this tab's edits on top if they are based on that same published version.
+async function loadHosted(ignoreSession = false) {
+  const res = await fetch('data/cars.json', { cache: 'no-store' });
+  if (!res.ok) throw new Error('could not read data/cars.json (' + res.status + ')');
+  const text = await res.text();
+  publishedHash = hashText(text);
+  const session = ignoreSession ? null : readSession();
+  let notice = '';
+  if (session && session.base === publishedHash) {
+    data = session.data;
+    editedInSession = true;
+  } else {
+    data = JSON.parse(text);
+    editedInSession = false;
+    if (session) { writeSession(null); notice = 'The published data was updated, so your earlier changes were dropped.'; }
+  }
+  render();
+  renderBanner(notice);
+}
 
-document.getElementById('add-car').addEventListener('click', addCar);
-load().catch(err => setStatus('Could not load data: ' + err.message, 'error'));
+async function resetToPublished() {
+  writeSession(null);
+  await loadHosted(true);
+  setStatus('Back to the published data', 'ok');
+}
+
+async function start() {
+  document.getElementById('add-car').addEventListener('click', addCar);
+  // With the local server /api/data answers with JSON; on a static host (GitHub Pages) it does not exist.
+  const probe = await fetch('/api/data', { cache: 'no-store' }).catch(() => null);
+  hosted = !(probe && probe.ok && (probe.headers.get('content-type') || '').includes('json'));
+  if (hosted) {
+    document.getElementById('hint').textContent = 'Untick a cost to leave it out. Your changes stay in this browser tab only.';
+    await loadHosted();
+    return;
+  }
+  renderBanner();
+  await load();
+  // Pick up cars added to cars.json outside the app (e.g. by Claude) without a manual refresh.
+  window.addEventListener('focus', () => load(true).catch(() => {}));
+  setInterval(() => { if (!document.hidden) load(true).catch(() => {}); }, 5000);
+}
+
+start().catch(err => setStatus('Could not load data: ' + err.message, 'error'));
