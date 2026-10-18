@@ -1,0 +1,895 @@
+{
+  "settings": {
+    "mil_per_year": 1700,
+    "return_rate_pct": 7,
+    "prices": {
+      "diesel": 23.19,
+      "petrol": 18.74,
+      "el_home": 1.8,
+      "el_public": 5
+    },
+    "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract.",
+    "new_car_template": [
+      {
+        "name": "Bensin",
+        "type": "fuel",
+        "energy": "petrol",
+        "consumption": 0,
+        "share_pct": 100,
+        "enabled": true
+      },
+      {
+        "name": "Leasingavgift 2000 mil",
+        "type": "fixed",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Serviceavtal",
+        "type": "fixed",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Försäkring",
+        "type": "fixed",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Uppläggningsavgift",
+        "type": "one_time",
+        "enabled": true,
+        "value": 590,
+        "months": 36
+      },
+      {
+        "name": "Skatt",
+        "type": "per_year",
+        "enabled": true,
+        "value": 0
+      },
+      {
+        "name": "Winter wheels, 4 used (rims + tyres)",
+        "type": "one_time",
+        "enabled": true,
+        "value": 8000,
+        "months": 36
+      },
+      {
+        "name": "Besiktning",
+        "type": "one_time",
+        "enabled": true,
+        "value": 529,
+        "months": 36
+      }
+    ]
+  },
+  "cars": [
+    {
+      "id": "v40",
+      "name": "Volvo V40 diesel (2018)",
+      "kind": "own",
+      "default": true,
+      "notes": "Current car, bought April 2024. Costs from CarPay + manual rows. Repairs Nov 2025 - Apr 2026 (about 41 000 kr): both front springs (one broke, so both were changed), the dust boot that failed because of the spring, and one injector (spridare). One more dust boot is expected to need replacing soon. Rear springs not changed. 167 000 km.",
+      "items": [
+        {
+          "id": "repairs",
+          "name": "Repairs & service (all-period average)",
+          "type": "fixed",
+          "value": 1779,
+          "enabled": true,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 3483 kr/month.",
+          "group": "repairs",
+          "auto_value": 1779
+        },
+        {
+          "id": "repairs_12m",
+          "name": "Repairs & service (last 12 months)",
+          "type": "fixed",
+          "value": 3483,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2025-10 to 2026-09. All-period average: 1779 kr/month.",
+          "group": "repairs",
+          "auto_value": 3483
+        },
+        {
+          "id": "damask_upcoming",
+          "name": "Dust boot (damask), expected soon",
+          "type": "one_time",
+          "value": 5000,
+          "months": 36,
+          "enabled": true,
+          "note": "One more dust boot is expected to need replacing; the last one cost about 5 000 kr. Counted once over 36 months. The repair averages only include past jobs, so this is added on top (a small overlap is possible)."
+        },
+        {
+          "id": "tyres",
+          "name": "New tyres",
+          "type": "fixed",
+          "value": 243,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 369 kr/month. Unticked: the summer tyres are fairly new and should last the next 3 years (user).",
+          "auto_value": 243
+        },
+        {
+          "id": "winter_tyres",
+          "name": "Winter tyres, 4 new Nokian 16\"",
+          "type": "one_time",
+          "value": 6800,
+          "months": 36,
+          "enabled": true,
+          "note": "Size ASSUMED to be 205/55 R16 (the usual V40 size for 16\" wheels): not checked against the car. Check the sidewall of the tyre or the vehicle data for the registration number. 4 x Nokian Hakkapeliitta R5 205/55 R16 94R XL (studless) cost about 1 540-1 950 kr each at Swedish shops (PriceRunner range; 1 703 kr at dackonline), so 6 800 kr is about 4 x 1 700. Excludes fitting, which is covered by the tyre shift. Counted once over 36 months. The V40 already has winter rims."
+        },
+        {
+          "id": "tyre_service",
+          "name": "Tyre shift + storage",
+          "type": "fixed",
+          "value": 143,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 249 kr/month.",
+          "auto_value": 143,
+          "hidden": true
+        },
+        {
+          "id": "insurance",
+          "name": "Insurance (Volvia)",
+          "type": "fixed",
+          "value": 628,
+          "enabled": true,
+          "auto": true,
+          "note": "Latest monthly premium. Average 2024-05 to 2026-09 (29 complete months): 575 kr/month.",
+          "auto_value": 628
+        },
+        {
+          "id": "vehicle_tax",
+          "name": "Vehicle tax",
+          "type": "per_year",
+          "value": 1177,
+          "enabled": true,
+          "auto": true,
+          "note": "Latest yearly tax.",
+          "auto_value": 1177
+        },
+        {
+          "id": "inspection",
+          "name": "Inspection (latest cost)",
+          "type": "per_year",
+          "value": 529,
+          "enabled": true,
+          "auto": true,
+          "note": "Latest inspection cost, counted once a year. Average 2024-05 to 2026-09 (29 complete months): 798 kr/year.",
+          "auto_value": 529
+        },
+        {
+          "id": "car_parts",
+          "name": "Car parts",
+          "type": "fixed",
+          "value": 10,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 0 kr/month.",
+          "auto_value": 10,
+          "hidden": true
+        },
+        {
+          "id": "parking",
+          "name": "Parking (same for every car)",
+          "type": "fixed",
+          "value": 50,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 73 kr/month.",
+          "auto_value": 50,
+          "hidden": true
+        },
+        {
+          "id": "wash",
+          "name": "Car wash (same for every car)",
+          "type": "fixed",
+          "value": 48,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 22 kr/month.",
+          "auto_value": 48,
+          "hidden": true
+        },
+        {
+          "id": "fuel_history",
+          "name": "Fuel, historical average",
+          "type": "fixed",
+          "value": 1291,
+          "enabled": false,
+          "auto": true,
+          "note": "Average 2024-05 to 2026-09 (29 complete months). Last 12 months: 1215 kr/month.",
+          "group": "fuel",
+          "auto_value": 1291,
+          "hidden": true
+        },
+        {
+          "id": "fuel",
+          "name": "Diesel at current price",
+          "type": "fuel",
+          "energy": "diesel",
+          "consumption": 0.51,
+          "share_pct": 100,
+          "enabled": true,
+          "note": "Estimate: historical spend ~1 290 kr/month at ~20 kr/l average gives ~0.45 l/mil. Check with odometer + litres.",
+          "group": "fuel"
+        },
+        {
+          "id": "depreciation",
+          "name": "Depreciation (13 %/year)",
+          "type": "depreciation",
+          "enabled": true,
+          "note": "The car keeps losing the same share of its value each year. It went from 180 000 to 130 000 kr in 29 months, which is about 12.6 %/year (13 % used). Value after 3 years = 130 000 × 0.87³ ≈ 85 600 kr, so it loses ≈ 44 400 kr over 36 months = ≈ 1 233 kr/month. Change value, % or months to test other assumptions.",
+          "value_now": 130000,
+          "rate_pct": 13,
+          "months": 36
+        },
+        {
+          "id": "capital",
+          "name": "Missed return",
+          "type": "capital",
+          "amount": 130000,
+          "enabled": true,
+          "note": "Money tied up in the car, compounded yearly over the chosen months: (amount x (1 + rate)^(months/12) - amount) / months. Earlier it was left out on purpose, since it is uncertain that the money would be invested. For reference, over 36 months at 7 %: 180 000 kr = 1 125 kr/month, 130 000 kr = 813 kr/month.",
+          "hidden": false,
+          "rate_pct": 1.5,
+          "months": 36
+        }
+      ],
+      "basis": "2024-05 to 2026-09 (29 complete months)",
+      "specs": {
+        "boot_l": 335,
+        "boot_max_l": 1032,
+        "length_mm": 4369,
+        "width_mm": 1802,
+        "height_mm": 1445,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "unverified",
+        "source": "Luggage 335 l (1 032 l folded) comes from press/web pages seen only as search-result summaries (Vi Bilägare, Business Car, Auto Świat); Volvo's own spec sheet was not read, and it is unknown what the 335 measures (to the cover or higher). Length/width from the same pages; height is 1 420-1 445 mm depending on the source. Power, gearbox and equipment depend on your exact V40 (D2/D3, manual or automatic, options): fill them in. Other sources: 324 l for some variants (Carsales, Carbuyer) and 402 l seats up (Parkers, possibly a higher measure). Luggage to the roof with the seats up, 402 l: given by the user, and Parkers also lists 402 l seats up; Volvo's own sheet was not read. The 335 l is then probably the figure up to the cover.",
+        "boot_roof_l": 402,
+        "gearbox": "Automatic"
+      }
+    },
+    {
+      "id": "car-upwdyt",
+      "name": "Audi A3 Sportback",
+      "kind": "lease",
+      "notes": "Möllers",
+      "items": [
+        {
+          "id": "item-krwz71",
+          "name": "Leasingavgift 2000 mil",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3272
+        },
+        {
+          "id": "item-2mcg51",
+          "name": "Serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 494
+        },
+        {
+          "id": "item-nxr3r3",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 5142
+        },
+        {
+          "id": "item-x2r3wj",
+          "name": "Bensin",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "petrol",
+          "consumption": 0.65,
+          "share_pct": 100
+        },
+        {
+          "id": "item-ru277m",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 356
+        },
+        {
+          "id": "item-myoxfl",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 590,
+          "months": 36
+        },
+        {
+          "id": "item-jpb5ik",
+          "name": "Extra garanti",
+          "type": "fixed",
+          "enabled": true,
+          "value": 45
+        },
+        {
+          "id": "item-rgpo6a",
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36
+        },
+        {
+          "id": "winter_tyres",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "value": 8000,
+          "months": 36,
+          "enabled": true,
+          "note": "Assumption: a used set of 4 winter wheels (rims and tyres), about 8 000 kr, bought once and spread over the 36 months. A new car needs its own rims, which is why this costs more than the V40's tyres alone. The lease car's own summer tyres are assumed new or included."
+        }
+      ],
+      "specs": {
+        "power_hp": 150,
+        "power_kw": 110,
+        "gearbox": "S tronic, 7-speed dual-clutch",
+        "gears": 7,
+        "boot_l": 380,
+        "boot_max_l": 1200,
+        "length_mm": 4343,
+        "width_mm": 1816,
+        "height_mm": 1430,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "dealer",
+        "source": "Equipment from the Börjessons Bil campaign page for '35 TFSI Proline S tronic' (valid to 2026-12-31): Backkamera, Parkeringssensorer fram & bak inklusive parkeringsassistent, Adaptiv farthållare. Luggage 380 l and 1 200 l with the seats folded, as read on audi.se by the user (an earlier 274 l was the plug-in hybrid's figure, not this car's); press articles also give 380 l. Which line the 380 l is measured to is not confirmed: assumed up to the luggage cover, like the Toyota and V40 figures. The luggage to the roof is not known. The 7 gears and the dimensions are not on the dealer page (from other sources, length varies 4 343-4 381 mm): check the equipment list of the actual car."
+      }
+    },
+    {
+      "id": "car-31ihj7",
+      "name": "Toyota Yaris Cross",
+      "kind": "lease",
+      "notes": "Toyota",
+      "items": [
+        {
+          "id": "item-y11kut",
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3528
+        },
+        {
+          "id": "item-mvpp1w",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 304
+        },
+        {
+          "id": "item-qwa1v3",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 695,
+          "months": 63
+        },
+        {
+          "id": "item-h3fng8",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 3323
+        },
+        {
+          "id": "item-7nrte3",
+          "name": "Bensin",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "petrol",
+          "consumption": 0.5,
+          "share_pct": 100
+        },
+        {
+          "id": "winter_tyres",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "value": 8000,
+          "months": 36,
+          "enabled": true,
+          "note": "Assumption: a used set of 4 winter wheels (rims and tyres), about 8 000 kr, bought once and spread over the 36 months. A new car needs its own rims, which is why this costs more than the V40's tyres alone. The lease car's own summer tyres are assumed new or included."
+        }
+      ],
+      "specs": {
+        "power_hp": 130,
+        "power_kw": 96,
+        "gearbox": "e-CVT (stepless, no fixed gears)",
+        "gears": null,
+        "boot_l": 350,
+        "boot_max_l": 1097,
+        "length_mm": 4172,
+        "width_mm": 1765,
+        "height_mm": 1585,
+        "rear_camera": "yes",
+        "parking_front": "option",
+        "parking_rear": "option",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Toyota Sverige spec sheet YARX_24 (August 2024). Hybrid 130 = 130 hp / 96 kW, CVT. Luggage from Toyota's own table for the Active (front-wheel drive), as pasted by the user: 350 l up to the luggage cover (the figure used here, to match the other cars' 'up to the cover' figures), 397 l with the rear seats up, 460 l to the roof with 5 seats, 1 097 l to the roof with the seats folded. Luggage compartment: 1 402 mm wide, 785 mm long behind row 2, 852 mm high to the roof (AWD-i is 320 l). Length 4 172-4 197 mm, height 1 585-1 595 mm. Backkamera and Farthållare aktiv Plus (ACC) are standard on Active. The sheet has no parking-sensor line for any trim: a Danish dealer lists them as an option, some used Swedish Active cars have them. 2024 sheet, check the 2026 model.",
+        "boot_roof_l": 460
+      }
+    },
+    {
+      "id": "car-ovwv3j",
+      "name": "Volvo EX30",
+      "kind": "lease",
+      "notes": "Volvo Cars",
+      "items": [
+        {
+          "id": "item-x3qqmf",
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 4351
+        },
+        {
+          "id": "item-e6kl4g",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 400
+        },
+        {
+          "id": "item-28t9hc",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 360
+        },
+        {
+          "id": "item-fbz31n",
+          "name": "El",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "el_public",
+          "consumption": 2,
+          "share_pct": 100
+        },
+        {
+          "id": "winter_tyres",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "value": 19000,
+          "months": 36,
+          "enabled": true,
+          "note": "Assumption: a used set of 4 winter wheels (rims and tyres), about 8 000 kr, bought once and spread over the 36 months. A new car needs its own rims, which is why this costs more than the V40's tyres alone. The lease car's own summer tyres are assumed new or included."
+        }
+      ],
+      "specs": {
+        "power_hp": 272,
+        "power_kw": 200,
+        "gearbox": "Single-speed (electric)",
+        "gears": 1,
+        "boot_l": 318,
+        "length_mm": 4233,
+        "width_mm": 1837,
+        "height_mm": 1549,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "unverified",
+        "source": "Power/gearbox from evkx.net and bilweb; luggage 318 l (plus ~7 l front) from ONE used-car ad, not from Volvo, measure unknown; dimensions from carshow360 (width there includes mirrors). Rear camera and rear sensors are listed for Core Single Motor by Volvo Car Retail and Brandt Bil; front sensors by only one of them. No source I could open states adaptive cruise / Pilot Assist for Core, and volvocars.com blocked automated access: check the configurator. Range 337 km (WLTP, 'upp till') is from Rejmes' page for the Core Single Motor, model year 2027; evkx.net gives 344 km for the Single Motor (about 49 kWh usable). This is not the Long Range version.",
+        "range_km": 337
+      }
+    },
+    {
+      "id": "car-tczhlr",
+      "name": "Skoda Kamiq",
+      "kind": "lease",
+      "notes": "Din Bil Skoda",
+      "items": [
+        {
+          "id": "item-3kx7e0",
+          "name": "Leasingavgift 2000 mil",
+          "type": "fixed",
+          "enabled": true,
+          "value": 2800
+        },
+        {
+          "id": "item-575zaj",
+          "name": "Serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 396
+        },
+        {
+          "id": "item-qrvsgu",
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 322
+        },
+        {
+          "id": "item-fc5umi",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 590,
+          "months": 36
+        },
+        {
+          "id": "item-ttei1o",
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 5916
+        },
+        {
+          "id": "item-10m3nj",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 8000,
+          "months": 36
+        },
+        {
+          "id": "item-u08igb",
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36
+        },
+        {
+          "id": "item-2mucat",
+          "name": "Bensin",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "petrol",
+          "consumption": 0.7,
+          "share_pct": 100
+        }
+      ],
+      "specs": {
+        "power_hp": 116,
+        "power_kw": 85,
+        "gearbox": "7-speed DSG (a 6-speed manual is cheaper)",
+        "gears": 7,
+        "boot_l": 400,
+        "boot_max_l": 1395,
+        "length_mm": 4249,
+        "width_mm": 1793,
+        "height_mm": 1559,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Skoda Sverige's price list for the Kamiq (offer valid to 2026-12-15) and skoda.se. Engine 1.0 TSI 116 hp, 6-speed manual or 7-speed DSG (DSG assumed, as the V40 is an automatic: check your quote). Standard on Selection: 'ACC - radarbaserad adaptiv farthållare' and 'Parkeringssensorer bak'. 'Backkamera' and 'Parkeringssensorer fram och bak' are in the Convenience package (8 800 kr), which the cheapest 'Selection Explore' offer (289 000 kr) includes: if your quote is plain Selection, the camera and the front sensors are extra cost. Luggage 400 l / 1 395 l folded from skoda.se (it does not say what 400 l is measured to). Length 4 249 mm and height 1 559 mm from skoda.se; the width 1 793 mm is without mirrors and not on Skoda's page (the page says 1 988 mm with mirrors)."
+      }
+    },
+    {
+      "id": "car-24xt8k",
+      "name": "Skoda Octavia",
+      "kind": "lease",
+      "notes": "Din Bil Skoda",
+      "items": [
+        {
+          "name": "Bensin",
+          "type": "fuel",
+          "energy": "petrol",
+          "consumption": 0.65,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-t8ual9"
+        },
+        {
+          "name": "Leasingavgift 2000 mil",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3354,
+          "id": "item-dwhz26"
+        },
+        {
+          "name": "Serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 396,
+          "id": "item-ost3xz"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 310,
+          "id": "item-l6htde"
+        },
+        {
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 590,
+          "months": 36,
+          "id": "item-em563u"
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 5142,
+          "id": "item-voykuu"
+        },
+        {
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 8000,
+          "months": 36,
+          "id": "item-kzv9q0"
+        },
+        {
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36,
+          "id": "item-jwmrp1"
+        }
+      ],
+      "specs": {
+        "power_hp": 116,
+        "power_kw": 85,
+        "gearbox": "7-speed DSG (a 6-speed manual is cheaper)",
+        "gears": 7,
+        "boot_l": 640,
+        "boot_max_l": 1700,
+        "length_mm": 4698,
+        "width_mm": 1829,
+        "height_mm": 1468,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Skoda Sverige's price list for the Octavia Combi dated 8 October 2026. The standard equipment of Selection (the cheapest trim) includes 'Adaptiv farthållare, ACC', 'Backkamera' and 'Parkeringssensorer fram och bak'. Engine 1.5 TSI 116 hp, 6-speed manual or (1.5 TSI m-HEV) 7-speed DSG: DSG assumed, check your quote. Luggage 640 l / 1 700 l folded and length 4 698 mm, height 1 468 mm from skoda.se (Combi; a Liftback has less luggage, so check which body your quote is). Skoda does not say what the 640 l is measured to. The width 1 829 mm is without mirrors and not on Skoda's page (it says 2 003 mm with mirrors)."
+      }
+    },
+    {
+      "id": "car-r8dcks",
+      "name": "Volvo EX30 Long Range (kampanj)",
+      "kind": "lease",
+      "notes": "Bilia",
+      "items": [
+        {
+          "name": "El",
+          "type": "fuel",
+          "energy": "el_public",
+          "consumption": 2,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-ye793e"
+        },
+        {
+          "name": "Leasingavgift 2000 mil inkl service",
+          "type": "fixed",
+          "enabled": true,
+          "value": 4148,
+          "id": "item-ebwjy9"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 362,
+          "id": "item-8xhtht"
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 360,
+          "id": "item-376ztr"
+        },
+        {
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 19000,
+          "months": 36,
+          "id": "item-ac1zci"
+        },
+        {
+          "id": "item-nnzu53",
+          "name": "Något tillägg",
+          "type": "fixed",
+          "enabled": true,
+          "value": 228
+        }
+      ],
+      "specs": {
+        "power_hp": 272,
+        "power_kw": 200,
+        "gearbox": "Single-speed (electric)",
+        "gears": 1,
+        "range_km": 476,
+        "boot_l": 318,
+        "length_mm": 4233,
+        "width_mm": 1837,
+        "height_mm": 1549,
+        "rear_camera": "yes",
+        "parking_front": "yes",
+        "parking_rear": "yes",
+        "adaptive_cruise": "yes",
+        "checked": "dealer",
+        "source": "Bilia's offer page names it 'Volvo EX30 P5 Plus MY27 Long Range' (offer valid during Bilia Days 14-18 October 2026) and lists 'Adaptiv farthållare, parkeringskamera' and 'upp till 476 km räckvidd'. The page does not say whether the camera is a rear or a 360 camera. Front and rear parking sensors are from Ahlberg Bil's listing of the Extended Range Plus Edition ('parkeringshjälp fram och bak', also Pilot Assist): another dealer, not Bilia. Power 272 hp / 200 kW is for the EX30 Single Motor (not stated on Bilia's page). Luggage and dimensions are copied from the other EX30 row (same body; the 318 l is from one used-car ad)."
+      }
+    },
+    {
+      "id": "car-5k0t7q",
+      "name": "Toyota C-HR",
+      "kind": "lease",
+      "notes": "",
+      "items": [
+        {
+          "name": "Bensin",
+          "type": "fuel",
+          "energy": "petrol",
+          "consumption": 0.5,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-ln6gyc"
+        },
+        {
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "enabled": true,
+          "value": 3937,
+          "id": "item-k7k4wf"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 304,
+          "id": "item-7y2827"
+        },
+        {
+          "id": "item-rcccgd",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "value": 695,
+          "months": 36,
+          "enabled": true
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 3644,
+          "id": "item-n2nfku"
+        },
+        {
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "enabled": true,
+          "value": 8000,
+          "months": 36,
+          "id": "item-fohue3"
+        },
+        {
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36,
+          "id": "item-p3yria"
+        }
+      ],
+      "specs": {
+        "power_hp": 140,
+        "power_kw": 103,
+        "gearbox": "e-CVT (stepless hybrid, no fixed gears)",
+        "gears": null,
+        "boot_l": 388,
+        "boot_max_l": 1155,
+        "length_mm": 4362,
+        "width_mm": 1832,
+        "height_mm": 1558,
+        "rear_camera": "yes",
+        "parking_front": "no",
+        "parking_rear": "no",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Toyota Sverige's spec sheet 'Toyota C-HR specifikationer & utrustning' (March 2024), for the cheapest version, the 1.8 Hybrid 140 Active (assumed: the app does not say which trim your quote is). 1.8 Hybrid 140 hp / 103 kW with a hybrid transmission (CVT). Luggage 388 l with the seats up under the luggage cover (same measure as the Yaris Cross's 350 l), 1 155 l with the seats folded up to the roof; the figure to the roof with the seats up is not on the sheet. Length 4 362 mm, width 1 832 mm, height 1 558-1 564 mm. 'Backkamera' and 'Farthållare, intelligent aktiv (iACC)' are standard on all trims including Active. Parking sensors front and rear are standard from Style up but marked '-' (not available) for Active, and none of the options packages can be ordered on Active. 2024 sheet: check the current model."
+      }
+    },
+    {
+      "id": "car-5tc8l5",
+      "name": "Toyota Corolla Touring Sports",
+      "kind": "lease",
+      "notes": "Toyota",
+      "items": [
+        {
+          "id": "item-ghw5pz",
+          "name": "Bensin",
+          "type": "fuel",
+          "energy": "petrol",
+          "consumption": 0.5,
+          "share_pct": 100,
+          "enabled": true
+        },
+        {
+          "id": "item-nachgd",
+          "name": "Leasingavgift 2000 mil + serviceavtal",
+          "type": "fixed",
+          "value": 3729,
+          "enabled": true
+        },
+        {
+          "id": "item-5fxfcr",
+          "name": "Försäkring",
+          "type": "fixed",
+          "value": 292,
+          "enabled": true
+        },
+        {
+          "id": "item-bfqpni",
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "value": 695,
+          "months": 36,
+          "enabled": true
+        },
+        {
+          "id": "item-qbnti5",
+          "name": "Skatt",
+          "type": "per_year",
+          "value": 3142,
+          "enabled": true,
+          "note": "Estimate, not in the quote: first-3-years malus 360 + 107 x (101 - 75) = 3142 kr/year with the 101 g/km WLTP CO2 of the 1.8 Hybrid on Toyota's sheet. Check with the dealer."
+        },
+        {
+          "id": "item-ibmhj2",
+          "name": "Winter wheels, 4 used (rims + tyres)",
+          "type": "one_time",
+          "value": 8000,
+          "months": 36,
+          "enabled": true
+        },
+        {
+          "id": "item-5lr9kz",
+          "name": "Besiktning",
+          "type": "one_time",
+          "value": 529,
+          "months": 36,
+          "enabled": true
+        }
+      ],
+      "specs": {
+        "power_hp": 140,
+        "power_kw": 103,
+        "gearbox": "e-CVT (stepless hybrid, no fixed gears)",
+        "gears": null,
+        "boot_l": 581,
+        "boot_max_l": 1591,
+        "length_mm": 4650,
+        "width_mm": 1790,
+        "height_mm": 1460,
+        "rear_camera": "yes",
+        "parking_front": "no",
+        "parking_rear": "no",
+        "adaptive_cruise": "yes",
+        "checked": "official",
+        "source": "Toyota Sverige's spec sheet 'Corolla Touring Sports specifikationer & utrustning' (May 2024), 1.8 Hybrid Active (the quote's version). 140 hp / 103 kW, CVT; WLTP 4.5-4.7 l/100 km and 101-107 g/km CO2. Luggage 581/596 l up to the luggage cover (581 used; the sheet does not say what the two values are) and 1 591/1 606 l folded up to the roof; the figure to the roof with the seats up is not on the sheet. Length 4 650/4 660 mm, width 1 790 mm, height 1 460 mm. 'Backkamera' and 'Farthållare, intelligent aktiv (iACC)' are standard on all four trims including Active. 'Parkeringssensorer fram' and 'bak' are standard from Style up but marked '-' (not available) for Active. 2024 sheet: check the current model."
+      }
+    }
+  ]
+}
