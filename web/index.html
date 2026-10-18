@@ -11,13 +11,14 @@
     <h1>Car costs</h1>
     <span id="status" class="status"></span>
   </header>
+  <div id="banner" class="banner" hidden></div>
   <main>
     <section class="panel" id="summary"></section>
     <section class="panel" id="specs"></section>
     <section class="panel" id="settings"></section>
     <div class="toolbar">
       <button type="button" id="add-car">+ Add car</button>
-      <span class="hint">Untick a cost to leave it out. Changes are saved to data/cars.json automatically.</span>
+      <span class="hint" id="hint">Untick a cost to leave it out. Changes are saved to data/cars.json automatically.</span>
     </div>
     <section id="cars"></section>
   </main>

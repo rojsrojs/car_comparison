@@ -11,6 +11,14 @@ Compare the monthly cost of cars (owned, leased, bought) so someone can decide w
 Start: double-click `start.bat` (runs `python app.py`, opens http://localhost:8765). Standard library only, no installs.
 Files: `app.py` (server), `web/` (page), `data/cars.json` (the car database).
 
+### Local and hosted
+
+The same `web/` page runs two ways. Locally, `app.py` serves it and saves every change to `data/cars.json`
+(`GET`/`PUT /api/data`). On GitHub Pages there is no server: the page finds that `/api/data` does not exist, reads the published
+`data/cars.json` read-only, and keeps a visitor's changes only in that browser tab (`sessionStorage`), under a banner with a
+"Reset to published data" button. The workflow `.github/workflows/pages.yml` builds the site (`web/` plus `data/cars.json`) on every
+push to `main`. To update the published data, change `data/cars.json` and push.
+
 ### cars.json
 
 ```json
