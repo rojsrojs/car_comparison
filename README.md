@@ -2,7 +2,7 @@
 
 Compare the monthly cost of different cars (owned, leased, bought): fuel or electricity at today's prices, insurance, tax,
 repairs, depreciation, tyres and more. Every cost can be ticked on or off, edited, hidden, or added as a custom cost.
-The page also compares size, luggage and equipment (rear camera, parking sensors, adaptive cruise).
+The page also compares power, size and luggage.
 
 ## Use it online (read-only)
 
