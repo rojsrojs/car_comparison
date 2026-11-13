@@ -4,7 +4,7 @@
     "prices": {
       "diesel": 23.19,
       "petrol": 18.74,
-      "el_home": 1.8,
+      "el_home": 4,
       "el_public": 5
     },
     "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract.",
@@ -221,7 +221,7 @@
         },
         {
           "id": "depreciation",
-          "name": "Depreciation (13 %/year)",
+          "name": "Depreciation",
           "type": "depreciation",
           "enabled": true,
           "note": "The car keeps losing the same share of its value each year. It went from 180 000 to 130 000 kr in 29 months, which is about 12.6 %/year (13 % used). Value after 3 years = 130 000 × 0.87³ ≈ 85 600 kr, so it loses ≈ 44 400 kr over 36 months = ≈ 1 233 kr/month. Change value, % or months to test other assumptions.",
@@ -237,7 +237,7 @@
           "enabled": true,
           "note": "Money tied up in the car, compounded yearly over the chosen months: (amount x (1 + rate)^(months/12) - amount) / months. Earlier it was left out on purpose, since it is uncertain that the money would be invested. For reference, over 36 months at 7 %: 180 000 kr = 1 125 kr/month, 130 000 kr = 813 kr/month.",
           "hidden": false,
-          "rate_pct": 1.5,
+          "rate_pct": 2,
           "months": 36
         }
       ],
@@ -457,7 +457,7 @@
           "name": "El",
           "type": "fuel",
           "enabled": true,
-          "energy": "el_public",
+          "energy": "el_home",
           "consumption": 2,
           "share_pct": 100
         },
@@ -670,7 +670,7 @@
         {
           "name": "El",
           "type": "fuel",
-          "energy": "el_public",
+          "energy": "el_home",
           "consumption": 2,
           "share_pct": 100,
           "enabled": true,
@@ -698,7 +698,7 @@
           "id": "item-376ztr"
         },
         {
-          "name": "Winter wheels, 4 used (rims + tyres)",
+          "name": "Winter wheels",
           "type": "one_time",
           "enabled": true,
           "value": 19000,
@@ -889,6 +889,80 @@
         "checked": "official",
         "source": "Toyota Sverige's spec sheet 'Corolla Touring Sports specifikationer & utrustning' (May 2024), 1.8 Hybrid Active (the quote's version). 140 hp / 103 kW, CVT; WLTP 4.5-4.7 l/100 km and 101-107 g/km CO2. Luggage 581/596 l up to the luggage cover (581 used; the sheet does not say what the two values are) and 1 591/1 606 l folded up to the roof; the figure to the roof with the seats up is not on the sheet. Length 4 650/4 660 mm, width 1 790 mm, height 1 460 mm. 'Backkamera' and 'Farthållare, intelligent aktiv (iACC)' are standard on all four trims including Active. 'Parkeringssensorer fram' and 'bak' are standard from Style up but marked '-' (not available) for Active. 2024 sheet: check the current model."
       }
+    },
+    {
+      "id": "car-3uaqwa",
+      "name": "Tesla Model 3 Premium Long Range RWD",
+      "kind": "buy",
+      "notes": "Ny med 0% ränta",
+      "items": [
+        {
+          "name": "El",
+          "type": "fuel",
+          "energy": "el_home",
+          "consumption": 2,
+          "share_pct": 100,
+          "enabled": true,
+          "id": "item-4pnn63"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 600,
+          "id": "item-cyqpr4"
+        },
+        {
+          "name": "Uppläggningsavgift",
+          "type": "one_time",
+          "enabled": true,
+          "value": 2500,
+          "months": 36,
+          "id": "item-4frjq1"
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 360,
+          "id": "item-8zrm2h"
+        },
+        {
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36,
+          "id": "item-j2475x"
+        },
+        {
+          "id": "item-8twjgr",
+          "name": "Kontantinsats, låsta pengar",
+          "type": "capital",
+          "enabled": true,
+          "amount": 115000,
+          "rate_pct": 2,
+          "months": 36
+        },
+        {
+          "id": "item-maqyud",
+          "name": "Vinterhjul",
+          "type": "one_time",
+          "enabled": true,
+          "value": 15000,
+          "months": 36
+        },
+        {
+          "id": "item-k3uf1j",
+          "name": "Värdeminskning",
+          "type": "depreciation",
+          "enabled": true,
+          "value_now": 539990,
+          "rate_pct": 15,
+          "months": 36
+        }
+      ],
+      "specs": {}
     }
   ]
 }
