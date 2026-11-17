@@ -4,7 +4,7 @@
     "prices": {
       "diesel": 23.19,
       "petrol": 18.74,
-      "el_home": 4,
+      "el_home": 3.13,
       "el_public": 5
     },
     "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract.",
@@ -119,7 +119,7 @@
           "type": "one_time",
           "value": 6800,
           "months": 36,
-          "enabled": true,
+          "enabled": false,
           "note": "Size ASSUMED to be 205/55 R16 (the usual V40 size for 16\" wheels): not checked against the car. Check the sidewall of the tyre or the vehicle data for the registration number. 4 x Nokian Hakkapeliitta R5 205/55 R16 94R XL (studless) cost about 1 540-1 950 kr each at Swedish shops (PriceRunner range; 1 703 kr at dackonline), so 6 800 kr is about 4 x 1 700. Excludes fitting, which is covered by the tyre shift. Counted once over 36 months. The V40 already has winter rims."
         },
         {
@@ -900,8 +900,8 @@
           "name": "El",
           "type": "fuel",
           "energy": "el_home",
-          "consumption": 2,
-          "share_pct": 100,
+          "consumption": 1.5,
+          "share_pct": 67,
           "enabled": true,
           "id": "item-4pnn63"
         },
@@ -971,6 +971,15 @@
           "months": 60,
           "balloon": 174250,
           "money_rate_pct": 2
+        },
+        {
+          "id": "item-qwf5el",
+          "name": "El",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "el_public",
+          "consumption": 1.5,
+          "share_pct": 33
         }
       ],
       "specs": {}
