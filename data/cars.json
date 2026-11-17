@@ -5,7 +5,7 @@
       "diesel": 23.19,
       "petrol": 18.74,
       "el_home": 3.13,
-      "el_public": 5
+      "el_public": 6
     },
     "prices_note": "Diesel/petrol: list prices 14 Oct 2026 (carup.se). A tax rise of ~3 kr/l is planned for 1 Dec 2026. Electricity is an estimate: home = SE3 spot ~0.75 + energy tax + grid fee + VAT; public = mix of AC and fast charging. Check your own electricity contract.",
     "new_car_template": [
@@ -983,6 +983,92 @@
         }
       ],
       "specs": {}
+    },
+    {
+      "id": "car-ai8bxk",
+      "name": "Tesla Model 3",
+      "kind": "buy",
+      "notes": "Någon form av begagnad inklusive vinterhjul",
+      "items": [
+        {
+          "name": "El",
+          "type": "fuel",
+          "energy": "el_home",
+          "consumption": 2,
+          "share_pct": 67,
+          "enabled": true,
+          "id": "item-vc908u"
+        },
+        {
+          "name": "Försäkring",
+          "type": "fixed",
+          "enabled": true,
+          "value": 1500,
+          "id": "item-rb8m59"
+        },
+        {
+          "name": "Skatt",
+          "type": "per_year",
+          "enabled": true,
+          "value": 360,
+          "id": "item-2x5sd1"
+        },
+        {
+          "name": "Besiktning",
+          "type": "one_time",
+          "enabled": true,
+          "value": 529,
+          "months": 36,
+          "id": "item-xdj3mw"
+        },
+        {
+          "id": "item-3ar17a",
+          "name": "Kontantinsats, låsta pengar",
+          "type": "capital",
+          "enabled": true,
+          "amount": 70000,
+          "rate_pct": 2,
+          "months": 36
+        },
+        {
+          "id": "item-s3bg3g",
+          "name": "Värdeminskning",
+          "type": "depreciation",
+          "enabled": true,
+          "value_now": 350000,
+          "rate_pct": 10,
+          "months": 36
+        },
+        {
+          "id": "item-e18ex9",
+          "name": "Lån",
+          "type": "loan",
+          "enabled": true,
+          "amount": 280000,
+          "rate_pct": 4,
+          "months": 36,
+          "balloon": 0,
+          "money_rate_pct": 2
+        },
+        {
+          "id": "item-hmt70d",
+          "name": "El",
+          "type": "fuel",
+          "enabled": true,
+          "energy": "el_public",
+          "consumption": 2,
+          "share_pct": 33
+        },
+        {
+          "id": "item-88qpas",
+          "name": "Service",
+          "type": "fixed",
+          "enabled": true,
+          "value": 200
+        }
+      ],
+      "specs": {},
+      "default": false
     }
   ]
 }

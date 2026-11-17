@@ -29,6 +29,7 @@ let totalCells = [];  // { car, el }
 let originCells = []; // { item, el }: the "auto" / "edited" badge of rows computed from the transactions
 let bootCells = [];   // { car, el }: luggage cells, the largest one is highlighted
 let budgetBoxes = []; // { car, el }: "how much repair cost can this car afford" boxes
+let paymentLabels = []; // { item, el }: the monthly payment shown on loan rows, refreshed on every change
 
 // How well the specs of a car are backed up.
 const CHECKED = {
@@ -165,6 +166,7 @@ function changed() {
 
 function render() {
   costCells = [];
+  paymentLabels = [];
   totalCells = [];
   originCells = [];
   budgetBoxes = [];
@@ -466,7 +468,8 @@ function renderParams(item) {
         numberInput(item, 'rate_pct', 'Annual interest (%)'), unit('%, over'),
         numberInput(item, 'months', 'Number of months'), unit('months, balloon'),
         numberInput(item, 'balloon', 'Lump sum still owed at the end (kr, 0 if none)'),
-        unit(`kr · payment ${kr(cost.payment)}/mo · money at`),
+        paymentLabel(item),
+        unit('money at'),
         numberInput(item, 'money_rate_pct', 'Return you would otherwise earn on the money locked up (%)'), unit('%')];
     }
     case 'excess_mileage':
@@ -485,8 +488,16 @@ function renderParams(item) {
   }
 }
 
+function paymentLabel(item) {
+  const el = h('span', { class: 'muted' });
+  paymentLabels.push({ item, el });
+  el.textContent = `payment ${kr(loanCost(item).payment)}/mo,`;
+  return el;
+}
+
 function updateNumbers() {
   for (const { item, el } of costCells) el.textContent = kr(monthly(item));
+  for (const { item, el } of paymentLabels) el.textContent = `payment ${kr(loanCost(item).payment)}/mo,`;
   for (const { car, el } of budgetBoxes) fillBudget(car, el);
   for (const { item, el } of originCells) {
     if (el.dataset.state !== String(item.auto)) { el.dataset.state = String(item.auto); fillOrigin(item, el); }
