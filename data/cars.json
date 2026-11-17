@@ -1014,14 +1014,6 @@
           "id": "item-2x5sd1"
         },
         {
-          "name": "Besiktning",
-          "type": "one_time",
-          "enabled": true,
-          "value": 529,
-          "months": 36,
-          "id": "item-xdj3mw"
-        },
-        {
           "id": "item-3ar17a",
           "name": "Kontantinsats, låsta pengar",
           "type": "capital",
@@ -1065,6 +1057,13 @@
           "type": "fixed",
           "enabled": true,
           "value": 200
+        },
+        {
+          "id": "item-u43dit",
+          "name": "Besiktning",
+          "type": "per_year",
+          "enabled": true,
+          "value": 529
         }
       ],
       "specs": {},
