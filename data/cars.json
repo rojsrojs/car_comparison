@@ -96,9 +96,9 @@
         },
         {
           "id": "damask_upcoming",
-          "name": "Dust boot (damask), expected soon",
+          "name": "Spindelled",
           "type": "one_time",
-          "value": 5000,
+          "value": 12000,
           "months": 36,
           "enabled": true,
           "note": "One more dust boot is expected to need replacing; the last one cost about 5 000 kr. Counted once over 36 months. The repair averages only include past jobs, so this is added on top (a small overlap is possible)."
@@ -957,9 +957,20 @@
           "name": "Värdeminskning",
           "type": "depreciation",
           "enabled": true,
-          "value_now": 539990,
+          "value_now": 540000,
           "rate_pct": 15,
           "months": 36
+        },
+        {
+          "id": "item-7j5ny5",
+          "name": "Lån",
+          "type": "loan",
+          "enabled": true,
+          "amount": 425000,
+          "rate_pct": 0,
+          "months": 60,
+          "balloon": 174250,
+          "money_rate_pct": 2
         }
       ],
       "specs": {}

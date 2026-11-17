@@ -42,6 +42,12 @@ Every cost is an item, converted to kr/month by the page. Item types and their f
 | `capital` | `amount` (kr tied up), `rate_pct` (interest per year, set on each row), `months` (default 36) | (amount × (1 + rate)^(months/12) − amount) / months: the return the money would have earned, compounded |
 | `depreciation` | `value_now` (kr), `rate_pct` (% lost per year), `months` | (value_now − value_now × (1 − rate)^(months/12)) / months. A used car keeps losing the same share of its value, not the same kronor |
 | `excess_mileage` | `rate` (kr/mil), `limit_per_year` (mil) | max(0, mil_per_year − limit) × rate / 12 |
+| `loan` | `amount` (loan, kr), `rate_pct` (annual interest), `months`, `balloon` (lump sum owed at the end, 0 if none), `money_rate_pct` (what the locked-up money would otherwise earn) | interest per month + money locked per month. The payment itself is not a cost. |
+
+For `loan`: payment = (amount − balloon / (1+i)^n) × i / (1 − (1+i)^−n), with i = rate / 12 (amount − balloon) / n at 0 %.
+Interest per month = total interest / n. Money locked per month = average principal repaid so far × money_rate / 12.
+The principal is not a cost on its own: the depreciation row carries the loss of value. Keep the deposit as its own
+`capital` row. Set `money_rate_pct` the same way for every car (the user uses 2 % for money they would not otherwise invest).
 
 Optional `group` on any item makes items either/or within a car: ticking one unticks the others in the same
 group (used for V40 repairs all-period vs last-12-month average, and fuel at current price vs historical).

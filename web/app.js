@@ -17,6 +17,7 @@ const TYPES = {
   capital: { label: 'money tied up (interest)', defaults: { amount: 0, rate_pct: 7, months: 36 } },
   depreciation: { label: 'depreciation (% per year)', defaults: { value_now: 0, rate_pct: 13, months: 36 } },
   excess_mileage: { label: 'excess mileage', defaults: { rate: 0, limit_per_year: 2000 } },
+  loan: { label: 'loan (interest + money locked)', defaults: { amount: 0, rate_pct: 0, months: 36, balloon: 0, money_rate_pct: 2 } },
 };
 
 let data = null;
@@ -72,6 +73,31 @@ function setStatus(text, kind = '') {
 
 // ---------- cost model ----------
 
+// A loan with an optional balloon (a lump sum due at the end). Returns the payment, the total interest and the
+// monthly cost of the interest plus the money locked up in repaying the principal, which could have been invested
+// at money_rate_pct instead. The principal itself is not a cost: the depreciation row covers the loss of value.
+function loanCost(item) {
+  const amount = num(item.amount), months = Math.round(num(item.months)), balloon = num(item.balloon);
+  if (amount <= 0 || months <= 0) return { payment: 0, interestPerMonth: 0, lockedPerMonth: 0 };
+  const i = num(item.rate_pct) / 100 / 12;
+  const payment = i === 0 ? (amount - balloon) / months
+    : (amount - balloon / Math.pow(1 + i, months)) * i / (1 - Math.pow(1 + i, -months));
+  // walk the schedule: interest on the open balance, the rest of the payment repays principal
+  let balance = amount, interestTotal = 0, lockedSum = 0;
+  for (let k = 1; k <= months; k++) {
+    const interest = balance * i;
+    interestTotal += interest;
+    balance -= payment - interest;
+    lockedSum += amount - balance;  // principal repaid so far (the balloon is not repaid until the end)
+  }
+  const averageLocked = lockedSum / months;
+  return {
+    payment,
+    interestPerMonth: interestTotal / months,
+    lockedPerMonth: averageLocked * num(item.money_rate_pct) / 100 / 12,
+  };
+}
+
 function monthly(item) {
   const s = data.settings;
   switch (item.type) {
@@ -95,6 +121,10 @@ function monthly(item) {
       if (months <= 0) return 0;
       const valueAfter = num(item.value_now) * Math.pow(1 - num(item.rate_pct) / 100, months / 12);
       return (num(item.value_now) - valueAfter) / months;
+    }
+    case 'loan': {
+      const cost = loanCost(item);
+      return cost.interestPerMonth + cost.lockedPerMonth;
     }
     case 'excess_mileage': return Math.max(0, num(s.mil_per_year) - num(item.limit_per_year)) * num(item.rate) / 12;
     default: return 0;
@@ -430,6 +460,15 @@ function renderParams(item) {
     case 'depreciation':
       return [numberInput(item, 'value_now'), unit('kr now, loses'), numberInput(item, 'rate_pct'),
         unit('%/year, over'), numberInput(item, 'months'), unit('months')];
+    case 'loan': {
+      const cost = loanCost(item);
+      return [numberInput(item, 'amount', 'Loan amount (kr)'), unit('kr loan at'),
+        numberInput(item, 'rate_pct', 'Annual interest (%)'), unit('%, over'),
+        numberInput(item, 'months', 'Number of months'), unit('months, balloon'),
+        numberInput(item, 'balloon', 'Lump sum still owed at the end (kr, 0 if none)'),
+        unit(`kr · payment ${kr(cost.payment)}/mo · money at`),
+        numberInput(item, 'money_rate_pct', 'Return you would otherwise earn on the money locked up (%)'), unit('%')];
+    }
     case 'excess_mileage':
       return [numberInput(item, 'rate'), unit('kr/mil over'), numberInput(item, 'limit_per_year'), unit('mil/year')];
     case 'fuel': {
