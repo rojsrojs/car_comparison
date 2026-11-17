@@ -900,7 +900,7 @@
           "name": "El",
           "type": "fuel",
           "energy": "el_home",
-          "consumption": 1.5,
+          "consumption": 2,
           "share_pct": 67,
           "enabled": true,
           "id": "item-4pnn63"
@@ -978,7 +978,7 @@
           "type": "fuel",
           "enabled": true,
           "energy": "el_public",
-          "consumption": 1.5,
+          "consumption": 6,
           "share_pct": 33
         }
       ],
